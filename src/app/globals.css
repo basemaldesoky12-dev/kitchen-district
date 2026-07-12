@@ -1,26 +1,221 @@
 @import "tailwindcss";
 
+/*
+ * Kitchen District — "Spice & Stone" design system
+ * Material 3 derived tokens exposed as Tailwind v4 theme variables.
+ * Utilities generate automatically: `bg-primary`, `text-on-surface`,
+ * `p-margin`, `text-display-lg`, `rounded-xl`, `font-display`.
+ */
+@theme {
+  /* ---- Fonts (values injected by next/font in layout.tsx) ---- */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-jakarta), system-ui, sans-serif;
+  --font-arabic: var(--font-tajawal), sans-serif;
+
+  /* ---- Color: Primary (terracotta) ---- */
+  --color-primary: #9f3c20;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #bf5336;
+  --color-on-primary-container: #fffbff;
+  --color-primary-fixed: #ffdbd1;
+  --color-primary-fixed-dim: #ffb5a1;
+  --color-on-primary-fixed: #3b0800;
+  --color-on-primary-fixed-variant: #82270d;
+  --color-inverse-primary: #ffb5a1;
+
+  /* ---- Color: Secondary (saffron / amber) ---- */
+  --color-secondary: #845400;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fdb249;
+  --color-on-secondary-container: #6f4600;
+  --color-secondary-fixed: #ffddb6;
+  --color-secondary-fixed-dim: #ffb95a;
+  --color-on-secondary-fixed: #2a1800;
+  --color-on-secondary-fixed-variant: #643f00;
+
+  /* ---- Color: Tertiary (olive) ---- */
+  --color-tertiary: #546136;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #6c7a4c;
+  --color-on-tertiary-container: #fbffe6;
+  --color-tertiary-fixed: #dae9b2;
+  --color-tertiary-fixed-dim: #becd98;
+  --color-on-tertiary-fixed: #151f00;
+  --color-on-tertiary-fixed-variant: #3f4b23;
+
+  /* ---- Color: Error ---- */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* ---- Color: Surfaces & neutrals ---- */
+  --color-background: #fff8f6;
+  --color-on-background: #271812;
+  --color-surface: #fff8f6;
+  --color-surface-dim: #f0d4ca;
+  --color-surface-bright: #fff8f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff1ec;
+  --color-surface-container: #ffe9e2;
+  --color-surface-container-high: #ffe2d8;
+  --color-surface-container-highest: #f9ddd2;
+  --color-on-surface: #271812;
+  --color-on-surface-variant: #57423d;
+  --color-surface-variant: #f9ddd2;
+  --color-surface-tint: #a23e23;
+  --color-inverse-surface: #3d2d26;
+  --color-inverse-on-surface: #ffede7;
+
+  /* ---- Color: Outlines ---- */
+  --color-outline: #8a726b;
+  --color-outline-variant: #ddc0b9;
+
+  /* ---- Typography scale ---- */
+  --text-display-lg: 3rem; /* 48px */
+  --text-display-lg--line-height: 3.75rem;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-headline-lg: 2rem; /* 32px */
+  --text-headline-lg--line-height: 2.5rem;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-mobile: 1.75rem; /* 28px */
+  --text-headline-mobile--line-height: 2.25rem;
+  --text-headline-mobile--font-weight: 700;
+
+  --text-title-md: 1.25rem; /* 20px */
+  --text-title-md--line-height: 1.75rem;
+  --text-title-md--font-weight: 600;
+
+  --text-body-lg: 1.125rem; /* 18px */
+  --text-body-lg--line-height: 1.75rem;
+
+  --text-body-md: 1rem; /* 16px */
+  --text-body-md--line-height: 1.5rem;
+
+  --text-label-md: 0.875rem; /* 14px */
+  --text-label-md--line-height: 1.25rem;
+  --text-label-md--font-weight: 600;
+
+  --text-caption: 0.75rem; /* 12px */
+  --text-caption--line-height: 1rem;
+
+  /* ---- Spacing ----
+   * Only unique semantic names here. We deliberately do NOT redefine the
+   * xs/sm/md/lg/xl keys: those are shared by Tailwind's sizing scales
+   * (max-w-md, w-lg, …), so shadowing them silently breaks widths. Use the
+   * numeric spacing scale (p-6, gap-8, …) in components instead. */
+  --spacing-gutter: 24px;
+  --spacing-margin: 32px;
+
+  /* ---- Radius ---- */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* ---- Easing ---- */
+  --ease-brand: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arabic / RTL swaps the type system to Tajawal. */
+[dir="rtl"] body,
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+}
+
+/* Material Symbols icon font baseline (self-hosted via next/font). */
+.material-symbols-outlined {
+  font-family: var(--font-material-symbols), "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ---- Reusable surface treatments ---- */
+.glass-panel {
+  background: rgba(255, 248, 246, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(221, 192, 185, 0.3);
+}
+
+.bento-card {
+  background: var(--color-surface-container-lowest);
+  box-shadow: 0 4px 12px rgba(42, 27, 21, 0.05);
+  transition: transform 0.4s var(--ease-brand), box-shadow 0.4s var(--ease-brand);
+}
+.bento-card:hover {
+  box-shadow: 0 12px 32px rgba(42, 27, 21, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ---- Infinite marquee for the trust strip ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+  .bento-card {
+    transition: none;
+  }
 }

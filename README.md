@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kitchen District
 
-## Getting Started
+Landing page for **Kitchen District** — the operating system for delivery-first
+food brands. Built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4,
+and [Motion](https://motion.dev). Bilingual (English / العربية) with full RTL
+support.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The code is organized for scale — content, presentation, and state are kept
+separate so the page can grow into a full marketing site.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Fonts, metadata, <html> shell, Providers
+│   ├── page.tsx            # Section composition
+│   └── globals.css         # "Spice & Stone" design tokens (Tailwind v4 @theme)
+├── context/
+│   ├── LanguageProvider.tsx # Locale state + RTL/dir sync + t()/pick() helpers
+│   └── ModalProvider.tsx    # Global Partner-Inquiry modal state
+├── lib/
+│   ├── i18n.ts             # Type-safe en/ar dictionary (UI copy)
+│   ├── content.ts          # Structured data: solutions, brands, locations…
+│   └── clsx.ts             # Minimal className joiner
+└── components/
+    ├── Providers.tsx       # Wraps app in Language + Modal providers
+    ├── ui/                 # Icon, Button, Reveal, CountUp primitives
+    ├── layout/             # Navbar, Footer
+    ├── sections/           # Hero, TrustStrip, Solutions, Facilities, …
+    ├── hero/DispatchNetwork.tsx  # Signature canvas animation
+    └── modal/InquiryModal.tsx
+```
 
-## Learn More
+### Design system
 
-To learn more about Next.js, take a look at the following resources:
+All Material 3 "Spice & Stone" tokens (terracotta / saffron / olive on a warm
+sand base) live in `globals.css` under Tailwind v4's `@theme`. They generate
+utilities automatically — e.g. `bg-primary`, `text-on-surface`, `p-margin`,
+`text-display-lg`, `font-display`. Change a token once, it updates everywhere.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Typography: **Playfair Display** (display), **Plus Jakarta Sans** (body),
+**Tajawal** (Arabic, auto-swapped in RTL) — loaded via `next/font`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Internationalization
 
-## Deploy on Vercel
+- UI copy → `lib/i18n.ts` (`useLanguage().t`)
+- Data strings → `Localized` records in `lib/content.ts` (`useLanguage().pick(...)`)
+- Toggling locale updates `<html dir/lang>`, which drives the RTL CSS and the
+  Arabic font swap. Add a locale by extending `Locale` and the dictionaries.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Signature animation — Dispatch Network
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`components/hero/DispatchNetwork.tsx` renders an ambient canvas of kitchen hub
+nodes continuously dispatching order pulses along delivery routes — a living
+metaphor for the delivery-first OS. It is DPR-aware, pauses on tab blur,
+respects `prefers-reduced-motion`, and cleans up its RAF loop on unmount.
+
+Other motion: staggered hero load, scroll reveals (`Reveal`), an infinite brand
+marquee, a `CountUp` dispatch-time stat, and an animated inquiry modal — all
+degrade gracefully under reduced-motion.
+
+## Notes
+
+- **Locations:** Jeddah is currently the only operational district. Add more by
+  appending to `locations` in `lib/content.ts`.
+- Facility/logistics imagery is loaded from Unsplash (whitelisted in
+  `next.config.ts`); swap for owned assets before production.
