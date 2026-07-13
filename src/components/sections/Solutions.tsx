@@ -118,7 +118,7 @@ export function Solutions() {
   const { t } = useLanguage();
 
   return (
-    <section id="solutions" className="scroll-mt-24 bg-background px-margin py-16">
+    <section id="solutions" className="scroll-mt-24 px-margin py-16">
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="mb-8 max-w-2xl">
           <h2 className="mb-4 font-display text-headline-lg text-on-surface">

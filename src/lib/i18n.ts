@@ -24,51 +24,64 @@ export const languageToggleLabel: Record<Locale, string> = {
 export const dictionary = {
   en: {
     nav: {
-      network: "Network",
       solutions: "Solutions",
       facilities: "Facilities",
-      expansion: "Expansion",
+      locations: "Locations",
+      investors: "Investors",
       login: "Login",
       launch: "Launch Now",
     },
     hero: {
-      badge: "Now live in Jeddah",
+      badge: "Cloud kitchen infrastructure · Jeddah",
       titleLead: "The operating system for",
       titleAccent: "delivery-first",
       titleTail: "food brands.",
       subtitle:
-        "Elevate your hospitality footprint across the Kingdom. We provide the infrastructure, technology, and operational excellence to scale your culinary vision without the friction of traditional brick-and-mortar.",
+        "Fully equipped cloud kitchens and the technology to launch, operate, and scale delivery brands — without building infrastructure from scratch.",
       primaryCta: "Join the District",
       secondaryCta: "Explore Facilities",
     },
-    trust: {
-      eyebrow: "One kitchen platform, built for every delivery concept",
+    howItWorks: {
+      eyebrow: "How it works",
+      title: "Simple. Fast. Scalable.",
+      subtitle:
+        "One platform to launch a kitchen, run it day to day, and grow across the Kingdom.",
+    },
+    whyUs: {
+      eyebrow: "Why Kitchen District",
+      title: "Infrastructure designed for growth.",
     },
     solutions: {
       title: "A complete culinary ecosystem.",
       subtitle:
         "Everything you need to operate, scale, and optimize your delivery business, integrated into one seamless platform.",
-      exploreDashboard: "Explore dashboard",
-      viewInsights: "View insights",
-      startJourney: "Start your journey",
     },
     facilities: {
-      eyebrow: "Infrastructure",
-      title: "Designed for culinary excellence.",
-      body: "Our facilities transcend the concept of 'dark kitchens'. We build professional culinary hubs utilizing premium materials, advanced HVAC systems for air quality, and ergonomic layouts designed by veteran chefs.",
+      eyebrow: "Facilities",
+      title: "Built for high performance.",
+      subtitle:
+        "Purpose-built spaces engineered for delivery throughput, food safety and operational reliability.",
     },
-    logistics: {
-      eyebrow: "Logistics",
-      title: "Seamless rider integration.",
-      body: "The handover is critical. Our hubs feature dedicated rider zones, smart dispatch screens, and optimized parking to ensure food goes from kitchen to customer with zero friction.",
-      cta: "Read about our logistics partners",
-      statLabel: "Average Dispatch Time",
-      statUnit: "Minutes",
+    trust: {
+      eyebrow: "One kitchen platform, built for every delivery concept",
     },
     expansion: {
       title: "Strategic network expansion.",
       subtitle:
         "Position your brand where the demand is. Our network is anchored in Jeddah, the Kingdom's culinary gateway.",
+    },
+    investors: {
+      eyebrow: "For investors",
+      title: "The infrastructure behind the future of food.",
+      body: "Food delivery is reshaping the restaurant industry. Kitchen District provides the physical infrastructure and operational backbone that modern food brands need to grow — efficiently and at scale.",
+      ctaPrimary: "Investor relations",
+      ctaSecondary: "Contact IR team",
+      thesisEyebrow: "The thesis",
+      thesisTitle: "An asset-light bet on the future of food.",
+      contactTitle: "Talk to our investor relations team.",
+      contactBody:
+        "We share detailed materials with qualified investors on request. Reach out and we'll get back to you.",
+      backHome: "Back to home",
     },
     modal: {
       title: "Partner Inquiry",
@@ -89,12 +102,12 @@ export const dictionary = {
       tagline: "Elevating Hospitality Through Technology.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
-      portal: "Partner Portal",
+      investors: "Investors",
       contact: "Contact Us",
-      rights: "© 2024 Kitchen District. Kingdom of Saudi Arabia.",
+      rights: "© 2026 Kitchen District. Kingdom of Saudi Arabia.",
     },
     status: {
-      liveNow: "Live Now",
+      liveNow: "Live",
     },
     common: {
       kitchensSuffix: "Kitchens",
@@ -103,51 +116,64 @@ export const dictionary = {
 
   ar: {
     nav: {
-      network: "الشبكة",
       solutions: "الحلول",
       facilities: "المرافق",
-      expansion: "التوسع",
+      locations: "المواقع",
+      investors: "المستثمرون",
       login: "تسجيل الدخول",
       launch: "انطلق الآن",
     },
     hero: {
-      badge: "متوفر الآن في جدة",
+      badge: "بنية تحتية للمطابخ السحابية · جدة",
       titleLead: "نظام التشغيل لعلامات",
       titleAccent: "الطعام",
       titleTail: "التي تعتمد على التوصيل.",
       subtitle:
-        "ارتقِ بحضور علامتك في قطاع الضيافة عبر المملكة. نوفّر البنية التحتية والتقنية والتميّز التشغيلي لتوسيع رؤيتك الطهوية دون عوائق المطاعم التقليدية.",
+        "مطابخ سحابية مجهّزة بالكامل والتقنية اللازمة لإطلاق وتشغيل وتوسيع علامات التوصيل — دون بناء البنية التحتية من الصفر.",
       primaryCta: "انضم إلى الحي",
       secondaryCta: "استكشف المرافق",
     },
-    trust: {
-      eyebrow: "منصة مطابخ واحدة، مبنية لكل مفهوم توصيل",
+    howItWorks: {
+      eyebrow: "كيف يعمل",
+      title: "بسيط. سريع. قابل للتوسّع.",
+      subtitle:
+        "منصة واحدة لإطلاق المطبخ وتشغيله يوميًا والنمو عبر المملكة.",
+    },
+    whyUs: {
+      eyebrow: "لماذا كيتشن ديستريكت",
+      title: "بنية تحتية مصممة للنمو.",
     },
     solutions: {
       title: "منظومة طهوية متكاملة.",
       subtitle:
         "كل ما تحتاجه لتشغيل وتوسيع وتحسين أعمال التوصيل، في منصة واحدة سلسة.",
-      exploreDashboard: "استكشف لوحة التحكم",
-      viewInsights: "عرض الرؤى",
-      startJourney: "ابدأ رحلتك",
     },
     facilities: {
-      eyebrow: "البنية التحتية",
-      title: "مصممة للتميّز الطهوي.",
-      body: "تتجاوز مرافقنا مفهوم «المطابخ المظلمة». نبني مراكز طهوية احترافية بمواد فاخرة وأنظمة تكييف متقدمة لجودة الهواء وتصاميم مريحة صممها طهاة محترفون.",
+      eyebrow: "المرافق",
+      title: "مبنية للأداء العالي.",
+      subtitle:
+        "مساحات مصممة خصيصًا لإنتاجية التوصيل وسلامة الغذاء والموثوقية التشغيلية.",
     },
-    logistics: {
-      eyebrow: "الخدمات اللوجستية",
-      title: "تكامل سلس مع المندوبين.",
-      body: "التسليم لحظة حاسمة. تضم مراكزنا مناطق مخصصة للمندوبين وشاشات إرسال ذكية ومواقف مُحسّنة لضمان وصول الطعام من المطبخ إلى العميل بلا أي عوائق.",
-      cta: "اقرأ عن شركائنا اللوجستيين",
-      statLabel: "متوسط زمن الإرسال",
-      statUnit: "دقيقة",
+    trust: {
+      eyebrow: "منصة مطابخ واحدة، مبنية لكل مفهوم توصيل",
     },
     expansion: {
       title: "توسع استراتيجي للشبكة.",
       subtitle:
         "ضع علامتك حيث يوجد الطلب. تتمركز شبكتنا في جدة، البوابة الطهوية للمملكة.",
+    },
+    investors: {
+      eyebrow: "للمستثمرين",
+      title: "البنية التحتية وراء مستقبل الطعام.",
+      body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر كيتشن ديستريكت البنية التحتية المادية والعمود التشغيلي الذي تحتاجه العلامات الحديثة للنمو — بكفاءة وعلى نطاق واسع.",
+      ctaPrimary: "علاقات المستثمرين",
+      ctaSecondary: "تواصل مع فريق العلاقات",
+      thesisEyebrow: "الفرضية",
+      thesisTitle: "رهان خفيف الأصول على مستقبل الطعام.",
+      contactTitle: "تحدّث مع فريق علاقات المستثمرين.",
+      contactBody:
+        "نشارك المواد التفصيلية مع المستثمرين المؤهلين عند الطلب. تواصل معنا وسنرد عليك.",
+      backHome: "العودة للرئيسية",
     },
     modal: {
       title: "استفسار الشراكة",
@@ -168,12 +194,12 @@ export const dictionary = {
       tagline: "نرتقي بالضيافة عبر التقنية.",
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة",
-      portal: "بوابة الشركاء",
+      investors: "المستثمرون",
       contact: "تواصل معنا",
-      rights: "© ٢٠٢٤ كيتشن ديستريكت. المملكة العربية السعودية.",
+      rights: "© ٢٠٢٦ كيتشن ديستريكت. المملكة العربية السعودية.",
     },
     status: {
-      liveNow: "متوفر الآن",
+      liveNow: "مباشر",
     },
     common: {
       kitchensSuffix: "مطبخ",

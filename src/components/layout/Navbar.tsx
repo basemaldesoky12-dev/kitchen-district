@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { navLinks } from "@/lib/content";
 import { languageToggleLabel } from "@/lib/i18n";
@@ -35,22 +36,22 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-margin py-6">
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="font-display text-title-md tracking-tight text-primary"
         >
           Kitchen District
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-margin md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.id}
               href={link.href}
               className="text-label-md text-on-surface-variant transition-colors hover:text-primary"
             >
               {t.nav[link.labelKey]}
-            </a>
+            </Link>
           ))}
           <button
             onClick={toggleLocale}

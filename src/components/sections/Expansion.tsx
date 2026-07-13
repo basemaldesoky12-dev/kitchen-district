@@ -12,7 +12,7 @@ export function Expansion() {
   const { openModal } = useModal();
 
   return (
-    <section id="expansion" className="scroll-mt-24 bg-background px-margin py-16">
+    <section id="locations" className="scroll-mt-24 px-margin py-16">
       <div className="mx-auto max-w-[1440px] text-center">
         <Reveal>
           <h2 className="mb-4 font-display text-headline-lg text-on-surface">

@@ -135,6 +135,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Site-wide "kitchen tile" grid — a subtle ceramic-tile texture that runs
+   behind the whole page and reads as a cloud-kitchen surface. Sections are
+   mostly transparent so this shows through; solid cards sit on top. */
+.tile-surface {
+  position: relative;
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(to right, rgba(159, 60, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(159, 60, 32, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+}
+
 /* Arabic / RTL swaps the type system to Tajawal. */
 [dir="rtl"] body,
 [dir="rtl"] .font-display {

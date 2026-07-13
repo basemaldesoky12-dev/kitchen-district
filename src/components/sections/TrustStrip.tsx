@@ -10,7 +10,7 @@ export function TrustStrip() {
   const loop = [...concepts, ...concepts];
 
   return (
-    <section className="overflow-hidden border-y border-outline-variant/20 bg-surface-container-lowest py-8">
+    <section className="overflow-hidden border-y border-outline-variant/30 py-10">
       <div className="mx-auto max-w-[1440px] px-margin">
         <p className="mb-6 text-center text-caption uppercase tracking-wider text-on-surface-variant">
           {t.trust.eyebrow}

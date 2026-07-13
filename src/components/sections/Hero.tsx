@@ -1,22 +1,21 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import { heroStats } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
 import { useModal } from "@/context/ModalProvider";
-import { KitchenHeat } from "@/components/hero/KitchenHeat";
+import { TileGrid } from "@/components/hero/TileGrid";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, pick } = useLanguage();
   const { openModal } = useModal();
   const reduceMotion = useReducedMotion();
 
   const container: Variants = {
     hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.12, delayChildren: 0.15 },
-    },
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } },
   };
   const item: Variants = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
@@ -32,18 +31,17 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[88vh] items-center justify-center overflow-hidden px-margin py-16"
     >
-      {/* Ambient "kitchen heat" animation — embers rising off a burner glow */}
+      {/* Animated cloud-kitchen tile grid */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <KitchenHeat className="h-full w-full" />
+        <TileGrid className="h-full w-full" />
       </div>
 
-      {/* Legibility wash: clears the centre for text, lets embers glow at the
-          edges and base of the hero. */}
+      {/* Legibility wash so centered text stays crisp over the animation */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(70% 60% at 50% 42%, rgba(255,248,246,0.85) 0%, rgba(255,248,246,0.55) 45%, rgba(255,248,246,0) 100%)",
+            "radial-gradient(60% 55% at 50% 45%, rgba(255,248,246,0.85) 0%, rgba(255,248,246,0.5) 55%, rgba(255,248,246,0) 100%)",
         }}
       />
 
@@ -55,9 +53,12 @@ export function Hero() {
       >
         <motion.div
           variants={item}
-          className="mb-8 inline-flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-high/80 px-4 py-2 text-label-md text-on-surface-variant shadow-sm backdrop-blur-sm"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface-container-lowest/70 px-4 py-2 text-label-md text-on-surface-variant shadow-sm backdrop-blur-sm"
         >
-          <Icon name="verified" size={16} className="text-secondary" filled />
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
           {t.hero.badge}
         </motion.div>
 
@@ -79,7 +80,7 @@ export function Hero() {
 
         <motion.div
           variants={item}
-          className="flex w-full flex-col items-center justify-center gap-6 sm:w-auto sm:flex-row"
+          className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row"
         >
           <Button
             onClick={openModal}
@@ -105,6 +106,23 @@ export function Hero() {
             {t.hero.secondaryCta}
           </Button>
         </motion.div>
+
+        {/* Stat row */}
+        <motion.dl
+          variants={item}
+          className="mt-14 grid w-full max-w-xl grid-cols-3 gap-6 border-t border-outline-variant/40 pt-8"
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.value}>
+              <dt className="font-display text-headline-lg text-on-surface">
+                {stat.value}
+              </dt>
+              <dd className="mt-1 text-caption uppercase tracking-wider text-on-surface-variant">
+                {pick(stat.label)}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </motion.div>
     </header>
   );

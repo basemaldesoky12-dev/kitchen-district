@@ -8,7 +8,7 @@ export function Footer() {
   const links = [
     { label: t.footer.privacy, href: "#" },
     { label: t.footer.terms, href: "#" },
-    { label: t.footer.portal, href: "#" },
+    { label: t.footer.investors, href: "/investors" },
     { label: t.footer.contact, href: "#" },
   ];
 
