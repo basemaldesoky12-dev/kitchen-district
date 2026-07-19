@@ -19,18 +19,6 @@ export const navLinks: NavLink[] = [
   { id: "investors", href: "/investors", labelKey: "investors" },
 ];
 
-/** Headline stats shown under the hero copy. */
-export interface HeroStat {
-  value: string;
-  label: Localized;
-}
-
-export const heroStats: HeroStat[] = [
-  { value: "24/7", label: { en: "Operations", ar: "تشغيل مستمر" } },
-  { value: "~4 wk", label: { en: "Avg. time to launch", ar: "متوسط زمن الإطلاق" } },
-  { value: "12", label: { en: "Kitchens live in Jeddah", ar: "مطبخ في جدة" } },
-];
-
 /**
  * Cuisine concepts the platform is built for, shown in the marquee.
  * (We're pre-launch — this signals breadth of capability, not a customer list.)
@@ -145,12 +133,10 @@ export interface Solution {
   accent: "primary" | "secondary" | "tertiary";
   /** Layout size in the bento grid. */
   span: "wide" | "single";
-  variant: "hero" | "standard" | "cta";
+  variant: "hero" | "standard";
   title: Localized;
   body: Localized;
   bullets?: SolutionBullet[];
-  /** Ordered onboarding steps (cta variant). */
-  steps?: Localized[];
   linkLabel?: Localized;
 }
 
@@ -161,10 +147,10 @@ export const solutions: Solution[] = [
     accent: "primary",
     span: "wide",
     variant: "hero",
-    title: { en: "KD Core", ar: "كيه دي كور" },
+    title: { en: "KD Core", ar: "KD Core" },
     body: {
-      en: "State-of-the-art commercial kitchen spaces optimized for high-volume delivery. Engineered for flow, safety, and operational excellence.",
-      ar: "مساحات مطابخ تجارية متطورة مُحسّنة للتوصيل عالي الحجم، مصممة للانسيابية والسلامة والتميّز التشغيلي.",
+      en: "Commercial kitchen spaces built for high-volume delivery — engineered for flow, food safety, and reliable operations.",
+      ar: "مساحات مطابخ تجارية مجهّزة للتوصيل عالي الحجم، مصممة للانسيابية وسلامة الغذاء وموثوقية التشغيل.",
     },
     bullets: [
       {
@@ -187,44 +173,12 @@ export const solutions: Solution[] = [
     accent: "secondary",
     span: "single",
     variant: "standard",
-    title: { en: "KD Ops", ar: "كيه دي أوبس" },
+    title: { en: "KD Ops", ar: "KD Ops" },
     body: {
-      en: "Unified dashboard to manage orders, track inventory, and analyze performance across all aggregators.",
-      ar: "لوحة تحكم موحّدة لإدارة الطلبات وتتبع المخزون وتحليل الأداء عبر جميع منصات التجميع.",
+      en: "One dashboard to manage orders, track inventory, and analyze performance across every delivery platform.",
+      ar: "لوحة تحكم واحدة لإدارة الطلبات وتتبع المخزون وتحليل الأداء عبر جميع منصات التوصيل.",
     },
     linkLabel: { en: "Explore dashboard", ar: "استكشف لوحة التحكم" },
-  },
-  {
-    id: "kd-intelligence",
-    icon: "psychology",
-    accent: "tertiary",
-    span: "single",
-    variant: "standard",
-    title: { en: "KD Intelligence", ar: "كيه دي إنتليجنس" },
-    body: {
-      en: "AI-powered demand forecasting and inventory management to minimize waste and maximize profitability.",
-      ar: "توقّع الطلب وإدارة المخزون بالذكاء الاصطناعي لتقليل الهدر وزيادة الربحية.",
-    },
-    linkLabel: { en: "View insights", ar: "عرض الرؤى" },
-  },
-  {
-    id: "kd-launch",
-    icon: "rocket_launch",
-    accent: "primary",
-    span: "wide",
-    variant: "cta",
-    title: { en: "KD Launch", ar: "كيه دي لانش" },
-    body: {
-      en: "From concept to first order in weeks, not months. Our onboarding team handles every step.",
-      ar: "من الفكرة إلى أول طلب خلال أسابيع لا أشهر. يتولى فريق الإعداد كل خطوة.",
-    },
-    steps: [
-      { en: "Licensing", ar: "التراخيص" },
-      { en: "Aggregator setup", ar: "ربط المنصات" },
-      { en: "Staff training", ar: "تدريب الطاقم" },
-      { en: "Go live", ar: "الإطلاق" },
-    ],
-    linkLabel: { en: "Start your journey", ar: "ابدأ رحلتك" },
   },
 ];
 
@@ -313,7 +267,7 @@ export const investorThesis: ThesisPoint[] = [
     title: { en: "Asset-light network", ar: "شبكة خفيفة الأصول" },
     body: {
       en: "A repeatable district model that compounds utilization across brands and aggregators.",
-      ar: "نموذج أحياء قابل للتكرار يضاعف الاستفادة عبر العلامات ومنصات التجميع.",
+      ar: "نموذج أحياء قابل للتكرار يرفع معدّل الاستفادة عبر العلامات ومنصات التوصيل.",
     },
   },
   {

@@ -33,7 +33,7 @@ export function Expansion() {
                   className="pointer-events-none absolute inset-0 opacity-[0.06]"
                   style={{
                     backgroundImage:
-                      "linear-gradient(#9f3c20 1px, transparent 1px), linear-gradient(90deg, #9f3c20 1px, transparent 1px)",
+                      "linear-gradient(#000000 1px, transparent 1px), linear-gradient(90deg, #000000 1px, transparent 1px)",
                     backgroundSize: "32px 32px",
                   }}
                 />

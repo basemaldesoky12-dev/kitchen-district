@@ -15,9 +15,9 @@ import { useEffect, useRef } from "react";
 
 const TILE = 56; // must match the CSS .tile-surface background-size
 const ACCENTS: Array<[number, number, number]> = [
-  [159, 60, 32], // terracotta (primary)
-  [233, 161, 57], // saffron (secondary)
-  [84, 97, 54], // olive (tertiary)
+  [17, 17, 17], // near-black (primary)
+  [85, 85, 85], // dark gray (secondary)
+  [150, 150, 150], // mid gray (tertiary)
 ];
 
 type Cell = {

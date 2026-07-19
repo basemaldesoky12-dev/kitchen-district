@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageProvider";
 
 export function Footer() {
@@ -16,9 +17,13 @@ export function Footer() {
     <footer className="border-t border-outline-variant/30 bg-surface-container-highest text-on-surface">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-gutter px-margin py-16 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="mb-4 font-display text-headline-lg text-primary">
-            Kitchen District
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Kitchen District"
+            width={83}
+            height={80}
+            className="mb-4 h-20 w-auto"
+          />
           <p className="text-caption text-on-surface-variant">
             {t.footer.tagline}
           </p>
