@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { navLinks } from "@/lib/content";
 import { languageToggleLabel } from "@/lib/i18n";
 import { useLanguage } from "@/context/LanguageProvider";
@@ -15,6 +16,8 @@ export function Navbar() {
   const { t, locale, toggleLocale } = useLanguage();
   const { openModal } = useModal();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -23,6 +26,21 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the mobile menu on Escape and lock scroll while open.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = overflow;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -30,7 +48,7 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={clsx(
         "sticky top-0 z-50 w-full border-b transition-all duration-300",
-        scrolled
+        scrolled || menuOpen
           ? "glass-panel border-outline-variant/30 shadow-sm"
           : "border-transparent bg-background/60 backdrop-blur-sm",
       )}
@@ -38,12 +56,24 @@ export function Navbar() {
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-margin py-6">
         <Link
           href="/"
-          className="font-display text-title-md tracking-tight text-primary"
+          aria-label="Kitchen District"
+          className="flex items-center gap-3"
+          onClick={() => setMenuOpen(false)}
         >
-          Kitchen District
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={59}
+            height={48}
+            priority
+            className="h-11 w-auto"
+          />
+          <span className="hidden font-display text-label-md font-bold uppercase tracking-[0.2em] text-primary sm:inline">
+            Kitchen District
+          </span>
         </Link>
 
-        <div className="hidden items-center gap-margin md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.id}
@@ -77,8 +107,55 @@ export function Navbar() {
               className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
             />
           </Button>
+          <button
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="flex h-11 w-11 items-center justify-center rounded text-on-surface transition-colors hover:text-primary lg:hidden"
+          >
+            <Icon name={menuOpen ? "close" : "menu"} size={24} />
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.3,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="overflow-hidden border-t border-outline-variant/30 lg:hidden"
+          >
+            <div className="flex flex-col gap-1 px-margin py-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded px-2 py-3 text-label-md text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
+                >
+                  {t.nav[link.labelKey]}
+                </Link>
+              ))}
+              <button
+                onClick={() => {
+                  toggleLocale();
+                  setMenuOpen(false);
+                }}
+                className="flex items-center gap-2 rounded px-2 py-3 text-start text-label-md text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
+              >
+                <Icon name="language" size={18} />
+                {languageToggleLabel[locale]}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans, Tajawal } from "next/font/google";
+import { Plus_Jakarta_Sans, Tajawal } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600", "700", "800"],
   display: "swap",
 });
 
@@ -46,7 +38,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${playfair.variable} ${jakarta.variable} ${tajawal.variable}`}
+      className={`${jakarta.variable} ${tajawal.variable}`}
     >
       <head>
         {/* Material Symbols icon font. `display=block` keeps ligatures from

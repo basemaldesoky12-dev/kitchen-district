@@ -6,10 +6,7 @@ import { useLanguage } from "@/context/LanguageProvider";
 import { useModal } from "@/context/ModalProvider";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-
-const fieldClass =
-  "w-full rounded border border-outline-variant bg-surface-container-lowest p-3 text-on-surface outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary";
-const labelClass = "mb-1 block text-label-md text-on-surface-variant";
+import { fieldClass, labelClass } from "@/components/ui/field";
 
 export function InquiryModal() {
   const { t } = useLanguage();

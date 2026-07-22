@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Skill tooling installed by ui-ux-pro-max — not app code.
+    ".claude/**",
+    // Local prebuilt deploy artifacts (vercel build).
+    ".vercel/**",
   ]),
 ]);
 

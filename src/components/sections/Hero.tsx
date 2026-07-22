@@ -41,7 +41,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 50% 45%, rgba(255,248,246,0.85) 0%, rgba(255,248,246,0.5) 55%, rgba(255,248,246,0) 100%)",
+            "radial-gradient(60% 55% at 50% 45%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 100%)",
         }}
       />
 

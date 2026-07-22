@@ -16,18 +16,21 @@ export function WhyUs() {
             <span className="h-2 w-2 rounded-full bg-primary" />
             {t.whyUs.eyebrow}
           </span>
-          <h2 className="font-display text-headline-lg text-on-surface md:text-display-lg">
+          <h2 className="mb-4 font-display text-headline-lg text-on-surface md:text-display-lg">
             {t.whyUs.title}
           </h2>
+          <p className="text-body-lg text-on-surface-variant">
+            {t.whyUs.subtitle}
+          </p>
         </Reveal>
 
         {/* 1px gaps over a tinted container render clean dividers at every
             breakpoint without per-cell border math. */}
-        <div className="grid gap-px overflow-hidden rounded-xl border border-outline-variant/40 bg-outline-variant/40 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-xl border border-outline-variant/40 bg-outline-variant/40 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, i) => (
             <Reveal
               key={benefit.icon}
-              delay={(i % 3) * 0.08}
+              delay={(i % 4) * 0.08}
               className="bg-surface-container-lowest"
             >
               <div className="flex h-full flex-col p-8 md:p-10">

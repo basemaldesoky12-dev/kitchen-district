@@ -15,9 +15,9 @@ import { useEffect, useRef } from "react";
 
 const TILE = 56; // must match the CSS .tile-surface background-size
 const ACCENTS: Array<[number, number, number]> = [
-  [159, 60, 32], // terracotta (primary)
-  [233, 161, 57], // saffron (secondary)
-  [84, 97, 54], // olive (tertiary)
+  [17, 17, 17], // ink (primary)
+  [80, 78, 73], // warm dark gray (on-surface-variant)
+  [154, 151, 144], // concrete-dark / silver (outline)
 ];
 
 type Cell = {
@@ -101,10 +101,10 @@ export function TileGrid({ className }: { className?: string }) {
       const y = cell.row * TILE;
       const pad = 3;
 
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.16 * glow})`;
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.1 * glow})`;
       ctx.fillRect(x + pad, y + pad, TILE - pad * 2, TILE - pad * 2);
 
-      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.5 * glow})`;
+      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.38 * glow})`;
       ctx.lineWidth = 1;
       ctx.strokeRect(x + pad + 0.5, y + pad + 0.5, TILE - pad * 2 - 1, TILE - pad * 2 - 1);
     };
