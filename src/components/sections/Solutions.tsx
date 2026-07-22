@@ -5,6 +5,7 @@ import { solutions } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
 import { useModal } from "@/context/ModalProvider";
 import { Icon } from "@/components/ui/Icon";
+import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { clsx } from "@/lib/clsx";
 
@@ -49,6 +50,40 @@ function SolutionCard({ solution }: { solution: Solution }) {
             </li>
           ))}
         </ul>
+      </div>
+    );
+  }
+
+  if (solution.variant === "cta") {
+    return (
+      <div className={clsx(CARD, "gap-8 md:flex-row md:items-center")}>
+        <div className="flex flex-1 flex-col">
+          <IconChip name={solution.icon} accent={solution.accent} />
+          <h3 className="mb-3 text-title-md font-semibold text-on-surface">
+            {pick(solution.title)}
+          </h3>
+          <p className="mb-6 text-body-md text-on-surface-variant">
+            {pick(solution.body)}
+          </p>
+          {solution.linkLabel && (
+            <Button onClick={openModal} variant="subtle" className="mt-auto self-start">
+              {pick(solution.linkLabel)}
+              <Icon name="arrow_forward" size={16} className="rtl:rotate-180" />
+            </Button>
+          )}
+        </div>
+
+        {/* Onboarding step timeline */}
+        <ol className="flex-1 space-y-4 rounded-lg border border-outline-variant/50 bg-surface-container-low p-6">
+          {solution.steps?.map((step, i) => (
+            <li key={pick(step)} className="flex items-center gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-caption font-bold text-on-primary">
+                {i + 1}
+              </span>
+              <span className="text-label-md text-on-surface">{pick(step)}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     );
   }

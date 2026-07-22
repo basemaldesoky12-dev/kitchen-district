@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import { heroStats } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
 import { useModal } from "@/context/ModalProvider";
 import { TileGrid } from "@/components/hero/TileGrid";
@@ -8,7 +9,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, pick } = useLanguage();
   const { openModal } = useModal();
   const reduceMotion = useReducedMotion();
 
@@ -40,7 +41,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 50% 45%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 100%)",
+            "radial-gradient(60% 55% at 50% 45%, rgba(255,248,246,0.85) 0%, rgba(255,248,246,0.5) 55%, rgba(255,248,246,0) 100%)",
         }}
       />
 
@@ -105,6 +106,23 @@ export function Hero() {
             {t.hero.secondaryCta}
           </Button>
         </motion.div>
+
+        {/* Stat row */}
+        <motion.dl
+          variants={item}
+          className="mt-14 grid w-full max-w-xl grid-cols-3 gap-6 border-t border-outline-variant/40 pt-8"
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.value}>
+              <dt className="font-display text-headline-lg text-on-surface">
+                {stat.value}
+              </dt>
+              <dd className="mt-1 text-caption uppercase tracking-wider text-on-surface-variant">
+                {pick(stat.label)}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </motion.div>
     </header>
   );

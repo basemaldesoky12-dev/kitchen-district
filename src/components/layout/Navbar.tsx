@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { navLinks } from "@/lib/content";
 import { languageToggleLabel } from "@/lib/i18n";
@@ -37,15 +36,11 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-margin py-6">
-        <Link href="/" className="flex items-center" aria-label="Kitchen District">
-          <Image
-            src="/logo-mark.png"
-            alt="Kitchen District"
-            width={59}
-            height={48}
-            priority
-            className="h-11 w-auto"
-          />
+        <Link
+          href="/"
+          className="font-display text-title-md tracking-tight text-primary"
+        >
+          Kitchen District
         </Link>
 
         <div className="hidden items-center gap-margin md:flex">

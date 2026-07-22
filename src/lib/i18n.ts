@@ -54,7 +54,7 @@ export const dictionary = {
     solutions: {
       title: "A complete culinary ecosystem.",
       subtitle:
-        "Everything you need to run, scale, and optimize your delivery business — in one platform.",
+        "Everything you need to operate, scale, and optimize your delivery business, integrated into one seamless platform.",
     },
     facilities: {
       eyebrow: "Facilities",
@@ -140,13 +140,13 @@ export const dictionary = {
         "منصة واحدة لإطلاق المطبخ وتشغيله يوميًا والنمو عبر المملكة.",
     },
     whyUs: {
-      eyebrow: "لماذا Kitchen District",
+      eyebrow: "لماذا كيتشن ديستريكت",
       title: "بنية تحتية مصممة للنمو.",
     },
     solutions: {
       title: "منظومة طهوية متكاملة.",
       subtitle:
-        "كل ما تحتاجه لتشغيل أعمال التوصيل وتوسيعها وتحسينها، في منصة واحدة.",
+        "كل ما تحتاجه لتشغيل وتوسيع وتحسين أعمال التوصيل، في منصة واحدة سلسة.",
     },
     facilities: {
       eyebrow: "المرافق",
@@ -165,7 +165,7 @@ export const dictionary = {
     investors: {
       eyebrow: "للمستثمرين",
       title: "البنية التحتية وراء مستقبل الطعام.",
-      body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر Kitchen District البنية التحتية والعمود التشغيلي الذي تحتاجه العلامات الحديثة كي تنمو بكفاءة وعلى نطاق واسع.",
+      body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر كيتشن ديستريكت البنية التحتية المادية والعمود التشغيلي الذي تحتاجه العلامات الحديثة للنمو — بكفاءة وعلى نطاق واسع.",
       ctaPrimary: "علاقات المستثمرين",
       ctaSecondary: "تواصل مع فريق العلاقات",
       thesisEyebrow: "الفرضية",
@@ -196,7 +196,7 @@ export const dictionary = {
       terms: "شروط الخدمة",
       investors: "المستثمرون",
       contact: "تواصل معنا",
-      rights: "© ٢٠٢٦ Kitchen District. المملكة العربية السعودية.",
+      rights: "© ٢٠٢٦ كيتشن ديستريكت. المملكة العربية السعودية.",
     },
     status: {
       liveNow: "مباشر",
