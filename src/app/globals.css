@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 /*
- * Kitchen District — "Ink & Concrete" design system
- * Monochrome brand palette (ink #111111 on white, Concrete #f5f4f1 neutral)
- * exposed as Tailwind v4 theme variables. Utilities generate automatically:
- * `bg-primary`, `text-on-surface`, `p-margin`, `text-display-lg`,
- * `rounded-xl`, `font-display`.
+ * Kitchen District — "Concrete & Emerald" design system
+ * Warm Concrete (#f5f4f1) surfaces with white cards, near-ink text, and an
+ * emerald (#107a5a) accent — exposed as Tailwind v4 theme variables.
+ * Utilities generate automatically: `bg-primary`, `text-on-surface`,
+ * `p-margin`, `text-display-lg`, `rounded-xl`, `font-display`.
  */
 @theme {
   /* ---- Fonts (values injected by next/font in layout.tsx) ---- */
@@ -18,36 +18,36 @@
   --color-neutral-dim: #e7e5e0;
   --color-on-neutral: #111111;
 
-  /* ---- Color: Primary (ink) ---- */
-  --color-primary: #111111;
+  /* ---- Color: Primary (emerald) ---- */
+  --color-primary: #107a5a;
   --color-on-primary: #ffffff;
-  --color-primary-container: #2b2b2b;
+  --color-primary-container: #148f69;
   --color-on-primary-container: #ffffff;
-  --color-primary-fixed: #e7e5e0;
-  --color-primary-fixed-dim: #cfcdc8;
-  --color-on-primary-fixed: #111111;
-  --color-on-primary-fixed-variant: #333333;
-  --color-inverse-primary: #d6d4cf;
+  --color-primary-fixed: #d6f0e5;
+  --color-primary-fixed-dim: #a9dfc9;
+  --color-on-primary-fixed: #06281d;
+  --color-on-primary-fixed-variant: #0c5f46;
+  --color-inverse-primary: #86d6b8;
 
-  /* ---- Color: Secondary (mid ink) ---- */
-  --color-secondary: #45433f;
+  /* ---- Color: Secondary (muted emerald-gray) ---- */
+  --color-secondary: #3d6b5c;
   --color-on-secondary: #ffffff;
-  --color-secondary-container: #f5f4f1;
-  --color-on-secondary-container: #111111;
-  --color-secondary-fixed: #e7e5e0;
-  --color-secondary-fixed-dim: #cfcdc8;
-  --color-on-secondary-fixed: #111111;
-  --color-on-secondary-fixed-variant: #333333;
+  --color-secondary-container: #d9e8e1;
+  --color-on-secondary-container: #0f2b21;
+  --color-secondary-fixed: #d9e8e1;
+  --color-secondary-fixed-dim: #b7d4c8;
+  --color-on-secondary-fixed: #0f2b21;
+  --color-on-secondary-fixed-variant: #2c5346;
 
-  /* ---- Color: Tertiary (soft gray) ---- */
-  --color-tertiary: #5c5a55;
+  /* ---- Color: Tertiary (deep emerald — Live badge, success) ---- */
+  --color-tertiary: #0b4a37;
   --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #e7e5e0;
-  --color-on-tertiary-container: #111111;
-  --color-tertiary-fixed: #e7e5e0;
-  --color-tertiary-fixed-dim: #cfcdc8;
-  --color-on-tertiary-fixed: #111111;
-  --color-on-tertiary-fixed-variant: #333333;
+  --color-tertiary-container: #cdeadd;
+  --color-on-tertiary-container: #0b4a37;
+  --color-tertiary-fixed: #cdeadd;
+  --color-tertiary-fixed-dim: #a3d6c0;
+  --color-on-tertiary-fixed: #06281d;
+  --color-on-tertiary-fixed-variant: #0b4a37;
 
   /* ---- Color: Error ---- */
   --color-error: #ba1a1a;
@@ -55,27 +55,27 @@
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
 
-  /* ---- Color: Surfaces & neutrals ---- */
-  --color-background: #ffffff;
-  --color-on-background: #111111;
-  --color-surface: #ffffff;
-  --color-surface-dim: #e7e5e0;
+  /* ---- Color: Surfaces & neutrals (Concrete) ---- */
+  --color-background: #f5f4f1;
+  --color-on-background: #191918;
+  --color-surface: #f5f4f1;
+  --color-surface-dim: #e2e0da;
   --color-surface-bright: #ffffff;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #fafaf8;
-  --color-surface-container: #f5f4f1;
-  --color-surface-container-high: #eeece8;
-  --color-surface-container-highest: #e7e5e0;
-  --color-on-surface: #111111;
-  --color-on-surface-variant: #504e49;
-  --color-surface-variant: #f5f4f1;
-  --color-surface-tint: #111111;
-  --color-inverse-surface: #111111;
-  --color-inverse-on-surface: #ffffff;
+  --color-surface-container-low: #faf9f7;
+  --color-surface-container: #f0efeb;
+  --color-surface-container-high: #e9e7e2;
+  --color-surface-container-highest: #e2e0da;
+  --color-on-surface: #191918;
+  --color-on-surface-variant: #52514c;
+  --color-surface-variant: #e9e7e2;
+  --color-surface-tint: #107a5a;
+  --color-inverse-surface: #16211d;
+  --color-inverse-on-surface: #f0f4f1;
 
   /* ---- Color: Outlines ---- */
-  --color-outline: #85827c;
-  --color-outline-variant: #dcdad4;
+  --color-outline: #82807a;
+  --color-outline-variant: #d9d7d0;
 
   /* ---- Typography scale ---- */
   --text-display-lg: 3rem; /* 48px */
@@ -148,8 +148,8 @@ body {
   position: relative;
   background-color: var(--color-background);
   background-image:
-    linear-gradient(to right, rgba(17, 17, 17, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16, 122, 90, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 122, 90, 0.06) 1px, transparent 1px);
   background-size: 56px 56px;
   background-position: center top;
 }
@@ -179,10 +179,10 @@ body {
 
 /* ---- Reusable surface treatments ---- */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(245, 244, 241, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(220, 218, 212, 0.4);
+  border: 1px solid rgba(217, 215, 208, 0.4);
 }
 
 .bento-card {

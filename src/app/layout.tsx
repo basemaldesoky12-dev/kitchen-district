@@ -18,13 +18,13 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "Kitchen District — The operating system for delivery-first food brands",
+  title: "Kitchen District — Cloud Kitchen Infrastructure in Jeddah",
   description:
-    "Infrastructure, technology, and operational excellence to scale your delivery-first food brand across the Kingdom. Now live in Jeddah.",
+    "Fully equipped commercial kitchens for delivery food brands. Kitchen District provides the space, equipment, technology, and operations to launch and scale in Jeddah.",
   openGraph: {
     title: "Kitchen District",
     description:
-      "The operating system for delivery-first food brands. Now live in Jeddah.",
+      "Cloud kitchen infrastructure in Jeddah — fully equipped commercial kitchens for delivery food brands.",
     type: "website",
   },
 };

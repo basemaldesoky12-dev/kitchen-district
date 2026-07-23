@@ -61,15 +61,28 @@ export function Navbar() {
           onClick={() => setMenuOpen(false)}
         >
           <Image
-            src="/logo-mark.png"
+            src="/kd-monogram.png"
             alt=""
-            width={59}
-            height={48}
+            width={63}
+            height={44}
             priority
             className="h-11 w-auto"
           />
-          <span className="hidden font-display text-label-md font-bold uppercase tracking-[0.2em] text-primary sm:inline">
-            Kitchen District
+          {/* Brandbook "Horizontal light" lockup: divider + stacked wordmark */}
+          <span
+            aria-hidden
+            className="hidden h-9 w-px bg-on-surface/70 sm:block"
+          />
+          <span className="hidden flex-col sm:flex">
+            <span className="font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+              Kitchen
+            </span>
+            <span className="font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+              District
+            </span>
+            <span className="mt-0.5 text-[8px] uppercase tracking-[0.18em] text-on-surface-variant">
+              Cloud Kitchen Platform
+            </span>
           </span>
         </Link>
 
@@ -93,12 +106,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#"
-            className="hidden px-4 py-2 text-label-md text-primary transition-colors hover:text-secondary lg:flex"
-          >
-            {t.nav.login}
-          </a>
           <Button onClick={openModal} className="group">
             {t.nav.launch}
             <Icon

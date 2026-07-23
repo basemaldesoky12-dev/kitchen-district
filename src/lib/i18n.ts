@@ -32,17 +32,16 @@ export const dictionary = {
       faq: "FAQ",
       contact: "Contact",
       investors: "Investors",
-      login: "Login",
-      launch: "Launch Now",
+      launch: "Book a Kitchen",
     },
     hero: {
       badge: "Cloud kitchen infrastructure · Jeddah",
-      titleLead: "The operating system for",
-      titleAccent: "delivery-first",
-      titleTail: "food brands.",
+      titleLead: "Launch your food brand in a",
+      titleAccent: "fully equipped",
+      titleTail: "commercial kitchen.",
       subtitle:
         "Fully equipped cloud kitchens and the technology to launch, operate, and scale delivery brands — without building infrastructure from scratch.",
-      primaryCta: "Join the District",
+      primaryCta: "Book a Kitchen",
       secondaryCta: "Explore Facilities",
     },
     howItWorks: {
@@ -58,9 +57,9 @@ export const dictionary = {
         "Infrastructure, technology, and operations — everything a food brand needs to launch and scale.",
     },
     solutions: {
-      title: "A complete culinary ecosystem.",
+      title: "Solutions built for food operators.",
       subtitle:
-        "Everything you need to operate, scale, and optimize your delivery business, integrated into one seamless platform.",
+        "Everything you need to operate, scale, and optimize your delivery business — in one platform.",
     },
     facilities: {
       eyebrow: "Facilities",
@@ -72,18 +71,18 @@ export const dictionary = {
       eyebrow: "One kitchen platform, built for every delivery concept",
     },
     expansion: {
-      title: "Strategic network expansion.",
+      title: "Expanding across the Kingdom.",
       subtitle:
-        "Position your brand where the demand is. Our network is anchored in Jeddah, the Kingdom's culinary gateway.",
+        "Put your brand where the demand is. Our network starts in Jeddah, with new districts planned across the Kingdom.",
     },
     investors: {
       eyebrow: "For investors",
-      title: "The infrastructure behind the future of food.",
+      title: "The infrastructure behind modern food brands.",
       body: "Food delivery is reshaping the restaurant industry. Kitchen District provides the physical infrastructure and operational backbone that modern food brands need to grow — efficiently and at scale.",
       ctaPrimary: "Investor relations",
       ctaSecondary: "Contact IR team",
       thesisEyebrow: "The thesis",
-      thesisTitle: "An asset-light bet on the future of food.",
+      thesisTitle: "An asset-light model in a growing market.",
       contactTitle: "Talk to our investor relations team.",
       contactBody:
         "We share detailed materials with qualified investors on request. Reach out and we'll get back to you.",
@@ -92,15 +91,16 @@ export const dictionary = {
     modal: {
       title: "Partner Inquiry",
       name: "Name",
-      namePlaceholder: "Enter your name",
+      namePlaceholder: "Your full name",
       brand: "Brand Name",
-      brandPlaceholder: "Enter your brand name",
+      brandPlaceholder: "Your brand name",
       city: "City",
       cityPlaceholder: "e.g. Jeddah",
       phone: "Phone",
-      phonePlaceholder: "+966...",
+      phonePlaceholder: "+966 5X XXX XXXX",
       message: "Tell us about your brand",
-      messagePlaceholder: "Your culinary vision...",
+      messagePlaceholder:
+        "What you need — kitchen size, preferred location, and when you plan to start.",
       submit: "Submit Inquiry",
       success: "Thank you — our partnerships team will be in touch shortly.",
     },
@@ -155,7 +155,7 @@ export const dictionary = {
       future: "New districts planned in Jeddah, Riyadh, Dammam, and beyond.",
     },
     footer: {
-      tagline: "Elevating Hospitality Through Technology.",
+      tagline: "Cloud kitchen infrastructure in Jeddah.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       pricing: "Pricing",
@@ -183,17 +183,16 @@ export const dictionary = {
       faq: "الأسئلة الشائعة",
       contact: "تواصل معنا",
       investors: "المستثمرون",
-      login: "تسجيل الدخول",
-      launch: "انطلق الآن",
+      launch: "احجز مطبخك",
     },
     hero: {
       badge: "البنية التحتية للمطابخ السحابية · جدة",
-      titleLead: "نظام التشغيل",
-      titleAccent: "لعلامات الطعام",
-      titleTail: "القائمة على التوصيل.",
+      titleLead: "ابدأ علامتك الغذائية",
+      titleAccent: "في مطبخ تجاري",
+      titleTail: "مجهّز بالكامل.",
       subtitle:
         "مطابخ سحابية مجهّزة بالكامل والتقنية اللازمة لإطلاق وتشغيل وتوسيع علامات التوصيل — دون بناء البنية التحتية من الصفر.",
-      primaryCta: "انضم إلى الحي",
+      primaryCta: "احجز مطبخك",
       secondaryCta: "استكشف المرافق",
     },
     howItWorks: {
@@ -209,32 +208,32 @@ export const dictionary = {
         "بنية تحتية وتقنية وتشغيل — كل ما تحتاجه علامتك الغذائية للانطلاق والتوسع.",
     },
     solutions: {
-      title: "منظومة متكاملة لتشغيل علامتك الغذائية.",
+      title: "حلول مصممة لمشغلي قطاع الأغذية.",
       subtitle:
-        "كل ما تحتاجه لتشغيل وتوسيع وتحسين أعمال التوصيل، في منصة واحدة سلسة.",
+        "كل ما تحتاجه لتشغيل أعمال التوصيل وتوسيعها وتحسينها — في منصة واحدة.",
     },
     facilities: {
       eyebrow: "المرافق",
       title: "مبنية للأداء العالي.",
       subtitle:
-        "مساحات مصممة خصيصًا لإنتاجية التوصيل وسلامة الغذاء والموثوقية التشغيلية.",
+        "مساحات مصممة لسرعة تجهيز الطلبات وسلامة الغذاء واستقرار التشغيل.",
     },
     trust: {
-      eyebrow: "منصة مطابخ واحدة، مبنية لكل مفهوم توصيل",
+      eyebrow: "منصة مطابخ واحدة لكل أنواع مطاعم التوصيل",
     },
     expansion: {
-      title: "توسع استراتيجي للشبكة.",
+      title: "نتوسع عبر المملكة.",
       subtitle:
-        "ضع علامتك حيث يوجد الطلب. تتمركز شبكتنا في جدة، بوابة المملكة لقطاع المطاعم.",
+        "ضع علامتك حيث يوجد الطلب. تبدأ شبكتنا من جدة، مع خطط لأحياء جديدة عبر المملكة.",
     },
     investors: {
       eyebrow: "للمستثمرين",
-      title: "البنية التحتية وراء مستقبل الطعام.",
+      title: "البنية التحتية خلف العلامات الغذائية الحديثة.",
       body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر كيتشن ديستريكت البنية التحتية المادية والعمود التشغيلي الذي تحتاجه العلامات الحديثة للنمو — بكفاءة وعلى نطاق واسع.",
       ctaPrimary: "علاقات المستثمرين",
       ctaSecondary: "تواصل مع فريق العلاقات",
       thesisEyebrow: "الفرضية",
-      thesisTitle: "رهان خفيف الأصول على مستقبل الطعام.",
+      thesisTitle: "نموذج خفيف الأصول في سوق متنامٍ.",
       contactTitle: "تحدّث مع فريق علاقات المستثمرين.",
       contactBody:
         "نشارك المواد التفصيلية مع المستثمرين المؤهلين عند الطلب. تواصل معنا وسنرد عليك.",
@@ -243,15 +242,16 @@ export const dictionary = {
     modal: {
       title: "استفسار الشراكة",
       name: "الاسم",
-      namePlaceholder: "أدخل اسمك",
+      namePlaceholder: "اسمك الكامل",
       brand: "اسم العلامة",
-      brandPlaceholder: "أدخل اسم علامتك",
+      brandPlaceholder: "اسم علامتك التجارية",
       city: "المدينة",
       cityPlaceholder: "مثال: جدة",
       phone: "الهاتف",
-      phonePlaceholder: "+966...",
+      phonePlaceholder: "+966 5X XXX XXXX",
       message: "أخبرنا عن علامتك",
-      messagePlaceholder: "رؤيتك الطهوية...",
+      messagePlaceholder:
+        "احتياجاتك — حجم المطبخ، الموقع المفضل، وموعد البدء المخطط له.",
       submit: "إرسال الاستفسار",
       success: "شكرًا لك — سيتواصل معك فريق الشراكات قريبًا.",
     },
@@ -306,7 +306,7 @@ export const dictionary = {
       future: "أحياء جديدة قيد التخطيط في جدة والرياض والدمام وما بعدها.",
     },
     footer: {
-      tagline: "نرتقي بالضيافة عبر التقنية.",
+      tagline: "البنية التحتية للمطابخ السحابية في جدة.",
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة",
       pricing: "الأسعار",

@@ -15,8 +15,8 @@ import { useEffect, useRef } from "react";
 
 const TILE = 56; // must match the CSS .tile-surface background-size
 const ACCENTS: Array<[number, number, number]> = [
-  [17, 17, 17], // ink (primary)
-  [80, 78, 73], // warm dark gray (on-surface-variant)
+  [16, 122, 90], // emerald (primary)
+  [61, 107, 92], // sage (secondary)
   [154, 151, 144], // concrete-dark / silver (outline)
 ];
 

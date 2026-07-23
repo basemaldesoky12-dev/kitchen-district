@@ -75,7 +75,7 @@ export function AboutContent() {
               className="pointer-events-none absolute inset-0 opacity-[0.06]"
               style={{
                 backgroundImage:
-                  "linear-gradient(#111111 1px, transparent 1px), linear-gradient(90deg, #111111 1px, transparent 1px)",
+                  "linear-gradient(#107a5a 1px, transparent 1px), linear-gradient(90deg, #107a5a 1px, transparent 1px)",
                 backgroundSize: "32px 32px",
               }}
             />

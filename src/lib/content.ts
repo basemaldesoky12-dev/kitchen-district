@@ -31,18 +31,6 @@ export const navLinks: NavLink[] = [
   { id: "investors", href: "/investors", labelKey: "investors" },
 ];
 
-/** Headline stats shown under the hero copy. */
-export interface HeroStat {
-  value: string;
-  label: Localized;
-}
-
-export const heroStats: HeroStat[] = [
-  { value: "24/7", label: { en: "Operations", ar: "تشغيل مستمر" } },
-  { value: "~4 wk", label: { en: "Avg. time to launch", ar: "متوسط زمن الإطلاق" } },
-  { value: "12", label: { en: "Kitchens live in Jeddah", ar: "مطبخ في جدة" } },
-];
-
 /**
  * Cuisine concepts the platform is built for, shown in the marquee.
  * (We're pre-launch — this signals breadth of capability, not a customer list.)
@@ -204,14 +192,14 @@ export const solutions: Solution[] = [
     variant: "hero",
     title: { en: "KD Core", ar: "KD Core" },
     body: {
-      en: "State-of-the-art commercial kitchen spaces optimized for high-volume delivery. Engineered for flow, safety, and operational excellence.",
-      ar: "مساحات مطابخ تجارية متطورة مُحسّنة للتوصيل عالي الحجم، مصممة للانسيابية والسلامة والتميّز التشغيلي.",
+      en: "Commercial kitchen spaces optimized for high-volume delivery. Engineered for flow, safety, and operational excellence.",
+      ar: "مساحات مطابخ تجارية مُهيأة للتوصيل عالي الحجم، مصممة لانسيابية العمل والسلامة والتشغيل المنضبط.",
     },
     bullets: [
       {
         text: {
           en: "Premium appliances & ventilation",
-          ar: "أجهزة وتهوية فاخرة",
+          ar: "أجهزة وتهوية عالية الجودة",
         },
       },
       {
@@ -282,7 +270,7 @@ export const locations: LocationNode[] = [
   {
     id: "jeddah",
     city: { en: "Jeddah", ar: "جدة" },
-    district: { en: "Al Zahra District Hub", ar: "مركز حي الزهراء" },
+    district: { en: "Al Safa District Hub", ar: "مركز حي الصفا" },
     kitchens: 12,
     status: "live",
   },
@@ -297,7 +285,7 @@ export interface InvestorStat {
 export const investorStats: InvestorStat[] = [
   { value: "$1T+", label: { en: "Global food-service market", ar: "سوق خدمات الطعام العالمي" } },
   { value: "18%+", label: { en: "GCC delivery CAGR", ar: "نمو التوصيل الخليجي السنوي" } },
-  { value: "−40%", label: { en: "Capex vs. standalone", ar: "توفير رأس المال مقابل المستقل" } },
+  { value: "−40%", label: { en: "Capex vs. standalone", ar: "توفير في رأس المال مقارنةً بالمطبخ المستقل" } },
   { value: "GCC", label: { en: "Expansion roadmap", ar: "خارطة التوسّع" } },
 ];
 
@@ -347,7 +335,7 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
-    name: { en: "Starter", ar: "المبتدئ" },
+    name: { en: "Starter", ar: "البداية" },
     description: {
       en: "For solo operators and new food brands testing a concept.",
       ar: "للمشغلين الأفراد والعلامات الجديدة التي تختبر فكرتها.",
