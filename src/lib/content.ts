@@ -536,6 +536,7 @@ export const contactBranches: Localized[] = [
 
 /** Facility / brand imagery (Unsplash — royalty free). */
 export const media = {
+  // Analytics dashboard — signals the SaaS/technology layer to investors.
   investors:
-    "https://images.unsplash.com/photo-1588416820614-f8d6ac6cea56?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
 } as const;
