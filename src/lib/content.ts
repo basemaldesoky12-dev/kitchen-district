@@ -99,7 +99,7 @@ export interface Benefit {
 
 export const benefits: Benefit[] = [
   {
-    icon: "savings",
+    icon: "payments",
     title: { en: "Lower Investment", ar: "استثمار أقل" },
     body: {
       en: "Skip millions in capex. Start operating in a professional kitchen for a fraction of the cost.",
@@ -250,7 +250,7 @@ export const facilityCards: FacilityCard[] = [
     id: "cold-storage",
     image: "/facilities/storage-cold.jpg",
     tag: { en: "Temperature-controlled", ar: "مُتحكّم بالحرارة" },
-    title: { en: "Cold & pantry storage", ar: "تخزين بارد ومؤن" },
+    title: { en: "Cold & freezer storage", ar: "تخزين بارد وتجميد" },
   },
 ];
 

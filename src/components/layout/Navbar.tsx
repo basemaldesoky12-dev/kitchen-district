@@ -53,11 +53,11 @@ export function Navbar() {
           : "border-transparent bg-background/60 backdrop-blur-sm",
       )}
     >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-margin py-6">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-5 sm:px-margin sm:py-6">
         <Link
           href="/"
           aria-label="Kitchen District"
-          className="flex items-center gap-3"
+          className="flex shrink-0 items-center gap-2 sm:gap-3"
           onClick={() => setMenuOpen(false)}
         >
           <Image
@@ -66,22 +66,19 @@ export function Navbar() {
             width={63}
             height={44}
             priority
-            className="h-11 w-auto"
+            className="h-9 w-auto sm:h-11"
           />
           {/* Brandbook "Horizontal light" lockup: divider + stacked wordmark */}
           <span
             aria-hidden
-            className="hidden h-9 w-px bg-on-surface/70 sm:block"
+            className="h-8 w-px shrink-0 bg-on-surface/70 sm:h-9"
           />
-          <span className="hidden flex-col sm:flex">
-            <span className="font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+          <span className="flex flex-col">
+            <span className="whitespace-nowrap font-display text-[11px] font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface sm:text-label-md">
               Kitchen
             </span>
-            <span className="font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+            <span className="whitespace-nowrap font-display text-[11px] font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface sm:text-label-md">
               District
-            </span>
-            <span className="mt-0.5 text-[8px] uppercase tracking-[0.18em] text-on-surface-variant">
-              Cloud Kitchen Platform
             </span>
           </span>
         </Link>
@@ -105,20 +102,20 @@ export function Navbar() {
           </button>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button onClick={openModal} className="group">
             {t.nav.launch}
             <Icon
               name="arrow_forward"
               size={18}
-              className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+              className="hidden transition-transform duration-300 group-hover:translate-x-1 sm:inline-block rtl:group-hover:-translate-x-1 rtl:rotate-180"
             />
           </Button>
           <button
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="flex h-11 w-11 items-center justify-center rounded text-on-surface transition-colors hover:text-primary lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded text-on-surface transition-colors hover:text-primary sm:h-11 sm:w-11 lg:hidden"
           >
             <Icon name={menuOpen ? "close" : "menu"} size={24} />
           </button>

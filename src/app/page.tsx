@@ -17,8 +17,8 @@ export default function Home() {
         <Hero />
         <HowItWorks />
         <WhyUs />
-        <Solutions />
         <Facilities />
+        <Solutions />
         <Expansion />
         <InvestorTeaser />
         {/* Concept marquee moved to the bottom, per request */}
