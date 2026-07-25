@@ -36,8 +36,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      dir="ltr"
+      lang="ar"
+      dir="rtl"
       className={`${jakarta.variable} ${tajawal.variable}`}
     >
       <head>

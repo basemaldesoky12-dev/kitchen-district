@@ -11,7 +11,7 @@ import { InquiryModal } from "@/components/modal/InquiryModal";
  */
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <LanguageProvider initialLocale="en">
+    <LanguageProvider initialLocale="ar">
       <ModalProvider>
         {children}
         <InquiryModal />
