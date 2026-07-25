@@ -35,13 +35,24 @@ export function Footer() {
     <footer className="border-t border-outline-variant/30 bg-surface-container-highest text-on-surface">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-gutter px-margin py-16 md:grid-cols-4">
         <div className="md:col-span-1">
-          <Image
-            src="/logo.png"
-            alt="Kitchen District"
-            width={83}
-            height={80}
-            className="mb-4 h-20 w-auto"
-          />
+          <div className="mb-4 flex items-center gap-3">
+            <Image
+              src="/kd-monogram.png"
+              alt=""
+              width={63}
+              height={44}
+              className="h-8 w-auto"
+            />
+            <span aria-hidden className="h-8 w-px bg-on-surface/70" />
+            <span className="flex flex-col">
+              <span className="whitespace-nowrap font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+                Kitchen
+              </span>
+              <span className="whitespace-nowrap font-display text-label-md font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface">
+                District
+              </span>
+            </span>
+          </div>
           <p className="text-caption text-on-surface-variant">
             {t.footer.tagline}
           </p>

@@ -71,7 +71,7 @@ export const dictionary = {
       eyebrow: "One kitchen platform, built for every delivery concept",
     },
     expansion: {
-      title: "Expanding across the Kingdom.",
+      title: "Expanding.",
       subtitle:
         "Put your brand where the demand is. Our network starts in Jeddah, with new districts planned across the Kingdom.",
     },
@@ -81,7 +81,7 @@ export const dictionary = {
       body: "Food delivery is reshaping the restaurant industry. Kitchen District provides the physical infrastructure and operational backbone that modern food brands need to grow — efficiently and at scale.",
       ctaPrimary: "Investor relations",
       ctaSecondary: "Contact IR team",
-      thesisEyebrow: "The thesis",
+      thesisEyebrow: "Why invest",
       thesisTitle: "An asset-light model in a growing market.",
       contactTitle: "Talk to our investor relations team.",
       contactBody:
@@ -222,9 +222,9 @@ export const dictionary = {
       eyebrow: "منصة مطابخ واحدة لكل أنواع مطاعم التوصيل",
     },
     expansion: {
-      title: "نتوسع عبر المملكة.",
+      title: "نتوسع.",
       subtitle:
-        "ضع علامتك حيث يوجد الطلب. تبدأ شبكتنا من جدة، مع خطط لأحياء جديدة عبر المملكة.",
+        "ضع علامتك حيث يوجد الطلب. تبدأ شبكتنا من جدة، مع خطط لأحياء جديدة في المملكة.",
     },
     investors: {
       eyebrow: "للمستثمرين",
@@ -232,7 +232,7 @@ export const dictionary = {
       body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر كيتشن ديستريكت البنية التحتية المادية والعمود التشغيلي الذي تحتاجه العلامات الحديثة للنمو — بكفاءة وعلى نطاق واسع.",
       ctaPrimary: "علاقات المستثمرين",
       ctaSecondary: "تواصل مع فريق العلاقات",
-      thesisEyebrow: "الفرضية",
+      thesisEyebrow: "لماذا الاستثمار معنا",
       thesisTitle: "نموذج خفيف الأصول في سوق متنامٍ.",
       contactTitle: "تحدّث مع فريق علاقات المستثمرين.",
       contactBody:

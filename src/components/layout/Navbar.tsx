@@ -66,12 +66,12 @@ export function Navbar() {
             width={63}
             height={44}
             priority
-            className="h-9 w-auto sm:h-11"
+            className="h-6 w-auto sm:h-8"
           />
           {/* Brandbook "Horizontal light" lockup: divider + stacked wordmark */}
           <span
             aria-hidden
-            className="h-8 w-px shrink-0 bg-on-surface/70 sm:h-9"
+            className="h-6 w-px shrink-0 bg-on-surface/70 sm:h-8"
           />
           <span className="flex flex-col">
             <span className="whitespace-nowrap font-display text-[11px] font-extrabold uppercase leading-[1.1] tracking-tight text-on-surface sm:text-label-md">
