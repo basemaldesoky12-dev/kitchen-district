@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function InvestorsContent() {
-  const { t, pick } = useLanguage();
+  const { t, pick, localize } = useLanguage();
   const { openModal } = useModal();
 
   return (
@@ -19,7 +19,7 @@ export function InvestorsContent() {
       <section className="px-margin pb-12 pt-12 md:pt-16">
         <div className="mx-auto max-w-[1440px]">
           <Link
-            href="/"
+            href={localize("/")}
             className="mb-8 inline-flex items-center gap-1 text-label-md text-on-surface-variant transition-colors hover:text-primary"
           >
             <Icon name="arrow_back" size={18} className="rtl:rotate-180" />

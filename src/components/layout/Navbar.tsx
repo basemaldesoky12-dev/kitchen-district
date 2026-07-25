@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/Button";
 import { clsx } from "@/lib/clsx";
 
 export function Navbar() {
-  const { t, locale, toggleLocale } = useLanguage();
+  const { t, locale, toggleLocale, localize } = useLanguage();
   const { openModal } = useModal();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,7 +55,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-5 sm:px-margin sm:py-6">
         <Link
-          href="/"
+          href={localize("/")}
           aria-label="Kitchen District"
           className="flex shrink-0 items-center gap-2 sm:gap-3"
           onClick={() => setMenuOpen(false)}
@@ -87,7 +87,7 @@ export function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.id}
-              href={link.href}
+              href={localize(link.href)}
               className="text-label-md text-on-surface-variant transition-colors hover:text-primary"
             >
               {t.nav[link.labelKey]}
@@ -139,7 +139,7 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <Link
                   key={link.id}
-                  href={link.href}
+                  href={localize(link.href)}
                   onClick={() => setMenuOpen(false)}
                   className="rounded px-2 py-3 text-label-md text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
                 >

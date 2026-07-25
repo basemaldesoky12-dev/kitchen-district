@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { PageHeader } from "@/components/ui/PageHeader";
 
 export function AboutContent() {
-  const { t, pick } = useLanguage();
+  const { t, pick, localize } = useLanguage();
 
   return (
     <main className="px-margin py-16">
@@ -89,7 +89,7 @@ export function AboutContent() {
                   {t.about.future}
                 </p>
               </div>
-              <Button as="a" href="/contact" className="group shrink-0">
+              <Button as="a" href={localize("/contact")} className="group shrink-0">
                 {t.contact.title}
                 <Icon
                   name="arrow_forward"

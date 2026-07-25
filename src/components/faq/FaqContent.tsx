@@ -8,7 +8,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { PageHeader } from "@/components/ui/PageHeader";
 
 export function FaqContent() {
-  const { t, pick } = useLanguage();
+  const { t, pick, localize } = useLanguage();
 
   return (
     <main className="px-margin py-16">
@@ -31,7 +31,7 @@ export function FaqContent() {
 
         <Reveal className="mt-12 flex flex-col items-center gap-4 text-center">
           <p className="text-body-lg text-on-surface">{t.faq.ctaTitle}</p>
-          <Button as="a" href="/contact" variant="outline">
+          <Button as="a" href={localize("/contact")} variant="outline">
             {t.faq.cta}
           </Button>
         </Reveal>

@@ -6,9 +6,9 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
   type ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   dictionary,
   localeDir,
@@ -24,32 +24,47 @@ interface LanguageContextValue {
   t: Dictionary;
   /** Resolve a localized data string to the current locale. */
   pick: (value: Localized) => string;
+  /** Prefix an internal href with the current locale ("/pricing" -> "/ar/pricing"). */
+  localize: (href: string) => string;
+  /** Navigate to the same path in the other locale. */
   toggleLocale: () => void;
-  setLocale: (locale: Locale) => void;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({
   children,
-  initialLocale = "en",
+  locale,
 }: {
   children: ReactNode;
-  initialLocale?: Locale;
+  locale: Locale;
 }) {
-  const [locale, setLocale] = useState<Locale>(initialLocale);
   const dir = localeDir[locale];
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // Keep the document root in sync so global CSS (RTL, font swap) applies.
+  // Keep the document root in sync so global CSS (RTL, font swap) applies
+  // immediately on client-side locale navigation.
   useEffect(() => {
     const root = document.documentElement;
     root.lang = locale;
     root.dir = dir;
   }, [locale, dir]);
 
+  const localize = useCallback(
+    (href: string) => {
+      if (href === "/") return `/${locale}`;
+      if (href.startsWith("/#")) return `/${locale}${href.slice(1)}`;
+      return `/${locale}${href}`;
+    },
+    [locale],
+  );
+
   const toggleLocale = useCallback(() => {
-    setLocale((prev) => (prev === "en" ? "ar" : "en"));
-  }, []);
+    const other: Locale = locale === "en" ? "ar" : "en";
+    const rest = pathname.replace(/^\/(en|ar)(?=\/|$)/, "");
+    router.push(`/${other}${rest}`);
+  }, [locale, pathname, router]);
 
   const pick = useCallback((value: Localized) => value[locale], [locale]);
 
@@ -59,10 +74,10 @@ export function LanguageProvider({
       dir,
       t: dictionary[locale],
       pick,
+      localize,
       toggleLocale,
-      setLocale,
     }),
-    [locale, dir, pick, toggleLocale],
+    [locale, dir, pick, localize, toggleLocale],
   );
 
   return (

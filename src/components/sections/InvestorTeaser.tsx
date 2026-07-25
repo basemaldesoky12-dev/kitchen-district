@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function InvestorTeaser() {
-  const { t } = useLanguage();
+  const { t, localize } = useLanguage();
   const { openModal } = useModal();
 
   return (
@@ -28,7 +28,7 @@ export function InvestorTeaser() {
                 {t.investors.body}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Button as="a" href="/investors" className="group">
+                <Button as="a" href={localize("/investors")} className="group">
                   {t.investors.ctaPrimary}
                   <Icon
                     name="arrow_outward"

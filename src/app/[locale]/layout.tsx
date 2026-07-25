@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Plus_Jakarta_Sans, Tajawal } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Providers } from "@/components/Providers";
+import { locales, localeDir, type Locale } from "@/lib/i18n";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -29,15 +31,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) notFound();
+  const lang = locale as Locale;
+
   return (
     <html
-      lang="ar"
-      dir="rtl"
+      lang={lang}
+      dir={localeDir[lang]}
       className={`${jakarta.variable} ${tajawal.variable}`}
     >
       <head>
@@ -51,7 +65,7 @@ export default function RootLayout({
         />
       </head>
       <body className="tile-surface">
-        <Providers>{children}</Providers>
+        <Providers locale={lang}>{children}</Providers>
       </body>
     </html>
   );

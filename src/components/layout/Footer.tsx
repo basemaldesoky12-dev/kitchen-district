@@ -20,7 +20,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, localize } = useLanguage();
   const whatsapp = contactChannels.find((c) => c.labelKey === "whatsapp");
 
   const links = [
@@ -72,7 +72,7 @@ export function Footer() {
           {links.map((link) => (
             <Link
               key={link.label}
-              href={link.href}
+              href={localize(link.href)}
               className="text-label-md text-on-surface-variant underline decoration-secondary underline-offset-4 transition-colors hover:text-secondary"
             >
               {link.label}
