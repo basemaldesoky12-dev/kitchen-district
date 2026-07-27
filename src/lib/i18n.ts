@@ -102,7 +102,9 @@ export const dictionary = {
       messagePlaceholder:
         "What you need — kitchen size, preferred location, and when you plan to start.",
       submit: "Submit Inquiry",
+      sending: "Sending…",
       success: "Thank you — our partnerships team will be in touch shortly.",
+      error: "Something went wrong — please try again or contact us directly.",
     },
     pricing: {
       eyebrow: "Pricing",
@@ -131,7 +133,9 @@ export const dictionary = {
         branch: "Preferred branch",
         message: "Message",
         submit: "Send message",
+        sending: "Sending…",
         success: "Thank you — we will be in touch shortly.",
+        error: "Something went wrong — please try again or contact us directly.",
       },
       channels: {
         whatsapp: "WhatsApp",
@@ -253,7 +257,9 @@ export const dictionary = {
       messagePlaceholder:
         "احتياجاتك — حجم المطبخ، الموقع المفضل، وموعد البدء المخطط له.",
       submit: "إرسال الاستفسار",
+      sending: "جارٍ الإرسال…",
       success: "شكرًا لك — سيتواصل معك فريق الشراكات قريبًا.",
+      error: "تعذّر إرسال استفسارك — حاول مرة أخرى أو تواصل معنا مباشرة.",
     },
     pricing: {
       eyebrow: "الأسعار",
@@ -282,7 +288,9 @@ export const dictionary = {
         branch: "الفرع المفضل",
         message: "الرسالة",
         submit: "إرسال",
+        sending: "جارٍ الإرسال…",
         success: "شكراً لك — سنتواصل معك قريباً.",
+        error: "تعذّر إرسال رسالتك — حاول مرة أخرى أو تواصل معنا مباشرة.",
       },
       channels: {
         whatsapp: "واتساب",

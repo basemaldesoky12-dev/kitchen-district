@@ -7,11 +7,14 @@ import { useModal } from "@/context/ModalProvider";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { fieldClass, labelClass } from "@/components/ui/field";
+import { submitInquiry } from "@/lib/inquiry";
+
+type Status = "idle" | "sending" | "success" | "error";
 
 export function InquiryModal() {
   const { t } = useLanguage();
   const { isOpen, closeModal } = useModal();
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   // Lock body scroll, close on Escape, focus first field while open.
@@ -36,14 +39,28 @@ export function InquiryModal() {
   // Reset the success state after the modal fully closes.
   useEffect(() => {
     if (!isOpen) {
-      const timer = window.setTimeout(() => setSubmitted(false), 300);
+      const timer = window.setTimeout(() => setStatus("idle"), 300);
       return () => window.clearTimeout(timer);
     }
   }, [isOpen]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const data = new FormData(e.currentTarget);
+    setStatus("sending");
+    try {
+      await submitInquiry("modal", {
+        name: String(data.get("name") ?? ""),
+        brand: String(data.get("brand") ?? ""),
+        city: String(data.get("city") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        message: String(data.get("message") ?? ""),
+        website: String(data.get("website") ?? ""),
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -85,7 +102,7 @@ export function InquiryModal() {
                   </button>
                 </div>
 
-                {submitted ? (
+                {status === "success" ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -111,6 +128,7 @@ export function InquiryModal() {
                       <input
                         ref={firstFieldRef}
                         type="text"
+                        name="name"
                         required
                         className={fieldClass}
                         placeholder={t.modal.namePlaceholder}
@@ -120,6 +138,7 @@ export function InquiryModal() {
                       <label className={labelClass}>{t.modal.brand}</label>
                       <input
                         type="text"
+                        name="brand"
                         className={fieldClass}
                         placeholder={t.modal.brandPlaceholder}
                       />
@@ -129,6 +148,7 @@ export function InquiryModal() {
                         <label className={labelClass}>{t.modal.city}</label>
                         <input
                           type="text"
+                          name="city"
                           className={fieldClass}
                           placeholder={t.modal.cityPlaceholder}
                         />
@@ -137,6 +157,7 @@ export function InquiryModal() {
                         <label className={labelClass}>{t.modal.phone}</label>
                         <input
                           type="tel"
+                          name="phone"
                           className={fieldClass}
                           placeholder={t.modal.phonePlaceholder}
                         />
@@ -146,12 +167,27 @@ export function InquiryModal() {
                       <label className={labelClass}>{t.modal.message}</label>
                       <textarea
                         rows={4}
+                        name="message"
                         className={fieldClass}
                         placeholder={t.modal.messagePlaceholder}
                       />
                     </div>
-                    <Button type="submit" size="lg" fullWidth className="mt-4">
-                      {t.modal.submit}
+                    <div className="hidden" aria-hidden="true">
+                      <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                    </div>
+                    {status === "error" && (
+                      <p role="alert" className="text-body-md text-error">
+                        {t.modal.error}
+                      </p>
+                    )}
+                    <Button
+                      type="submit"
+                      size="lg"
+                      fullWidth
+                      className="mt-4"
+                      disabled={status === "sending"}
+                    >
+                      {status === "sending" ? t.modal.sending : t.modal.submit}
                     </Button>
                   </form>
                 )}

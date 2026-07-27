@@ -9,17 +9,34 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { fieldClass, labelClass } from "@/components/ui/field";
+import { submitInquiry } from "@/lib/inquiry";
 
 const CARD = "bento-card rounded-xl border border-outline-variant/40 p-8";
 
+type Status = "idle" | "sending" | "success" | "error";
+
 export function ContactContent() {
   const { t, pick } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: wire to API/email service
-    setSubmitted(true);
+    const data = new FormData(e.currentTarget);
+    setStatus("sending");
+    try {
+      await submitInquiry("contact", {
+        name: String(data.get("name") ?? ""),
+        brand: String(data.get("brand") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        email: String(data.get("email") ?? ""),
+        branch: String(data.get("branch") ?? ""),
+        message: String(data.get("message") ?? ""),
+        website: String(data.get("website") ?? ""),
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -34,7 +51,7 @@ export function ContactContent() {
         <div className="grid gap-gutter lg:grid-cols-[1fr_minmax(320px,400px)]">
           <Reveal>
             <div className={CARD}>
-              {submitted ? (
+              {status === "success" ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -55,6 +72,7 @@ export function ContactContent() {
                       <input
                         id="contact-name"
                         type="text"
+                        name="name"
                         required
                         className={fieldClass}
                       />
@@ -63,7 +81,12 @@ export function ContactContent() {
                       <label htmlFor="contact-brand" className={labelClass}>
                         {t.contact.form.brand}
                       </label>
-                      <input id="contact-brand" type="text" className={fieldClass} />
+                      <input
+                        id="contact-brand"
+                        type="text"
+                        name="brand"
+                        className={fieldClass}
+                      />
                     </div>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
@@ -71,7 +94,12 @@ export function ContactContent() {
                       <label htmlFor="contact-phone" className={labelClass}>
                         {t.contact.form.phone}
                       </label>
-                      <input id="contact-phone" type="tel" className={fieldClass} />
+                      <input
+                        id="contact-phone"
+                        type="tel"
+                        name="phone"
+                        className={fieldClass}
+                      />
                     </div>
                     <div>
                       <label htmlFor="contact-email" className={labelClass}>
@@ -80,6 +108,7 @@ export function ContactContent() {
                       <input
                         id="contact-email"
                         type="email"
+                        name="email"
                         required
                         className={fieldClass}
                       />
@@ -89,7 +118,7 @@ export function ContactContent() {
                     <label htmlFor="contact-branch" className={labelClass}>
                       {t.contact.form.branch}
                     </label>
-                    <select id="contact-branch" className={fieldClass}>
+                    <select id="contact-branch" name="branch" className={fieldClass}>
                       {contactBranches.map((branch) => (
                         <option key={pick(branch)}>{pick(branch)}</option>
                       ))}
@@ -99,10 +128,28 @@ export function ContactContent() {
                     <label htmlFor="contact-message" className={labelClass}>
                       {t.contact.form.message}
                     </label>
-                    <textarea id="contact-message" rows={5} className={fieldClass} />
+                    <textarea
+                      id="contact-message"
+                      rows={5}
+                      name="message"
+                      className={fieldClass}
+                    />
                   </div>
-                  <Button type="submit" size="lg" className="mt-4">
-                    {t.contact.form.submit}
+                  <div className="hidden" aria-hidden="true">
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </div>
+                  {status === "error" && (
+                    <p role="alert" className="text-body-md text-error">
+                      {t.contact.form.error}
+                    </p>
+                  )}
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="mt-4"
+                    disabled={status === "sending"}
+                  >
+                    {status === "sending" ? t.contact.form.sending : t.contact.form.submit}
                   </Button>
                 </form>
               )}
