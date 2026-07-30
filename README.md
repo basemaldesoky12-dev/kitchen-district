@@ -1,77 +1,43 @@
 # Kitchen District
 
-Landing page for **Kitchen District** — the operating system for delivery-first
-food brands. Built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4,
-and [Motion](https://motion.dev). Bilingual (English / العربية) with full RTL
-support.
+Marketing site for **Kitchen District** — cloud kitchen infrastructure in
+Jeddah, KSA. Fully equipped commercial kitchens plus the technology to launch,
+operate, and scale delivery food brands.
+
+Built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and
+[Motion](https://motion.dev). Bilingual with **Arabic as the default**
+(`/ar`, RTL) and English at `/en`.
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
+npm run dev      # http://localhost:3000 (redirects / → /ar)
+npm run build    # production build (prerenders /en + /ar for every page)
 npm run lint
 ```
 
-## Architecture
+Deploys to Vercel via the prebuilt flow:
+`vercel build --prod && vercel deploy --prebuilt --prod`.
 
-The code is organized for scale — content, presentation, and state are kept
-separate so the page can grow into a full marketing site.
+## Documentation
 
-```
-src/
-├── app/
-│   ├── layout.tsx          # Fonts, metadata, <html> shell, Providers
-│   ├── page.tsx            # Section composition
-│   └── globals.css         # "Spice & Stone" design tokens (Tailwind v4 @theme)
-├── context/
-│   ├── LanguageProvider.tsx # Locale state + RTL/dir sync + t()/pick() helpers
-│   └── ModalProvider.tsx    # Global Partner-Inquiry modal state
-├── lib/
-│   ├── i18n.ts             # Type-safe en/ar dictionary (UI copy)
-│   ├── content.ts          # Structured data: solutions, brands, locations…
-│   └── clsx.ts             # Minimal className joiner
-└── components/
-    ├── Providers.tsx       # Wraps app in Language + Modal providers
-    ├── ui/                 # Icon, Button, Reveal, CountUp primitives
-    ├── layout/             # Navbar, Footer
-    ├── sections/           # Hero, TrustStrip, Solutions, Facilities, …
-    ├── hero/DispatchNetwork.tsx  # Signature canvas animation
-    └── modal/InquiryModal.tsx
-```
+| Doc | What's in it |
+|---|---|
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Stack, locale routing (`[locale]` + `proxy.ts`), i18n architecture (`i18n.ts` / `content.ts` / `LanguageProvider`), component map, build & deploy workflow, known pending items |
+| [docs/DESIGN.md](docs/DESIGN.md) | "Concrete & Emerald" design system: palette tokens, typography, logo usage, signature motifs (tile grid, bento cards), motion rules, and the copy-voice rules for English **and Arabic** |
+| [AGENTS.md](AGENTS.md) | ⚠️ Modified Next.js warning — read before writing Next-specific code |
 
-### Design system
+**Read both docs before adding features or copy** — they encode owner
+decisions (palette, tone, Arabic phrasing rules) that are not obvious from
+the code alone.
 
-All Material 3 "Spice & Stone" tokens (terracotta / saffron / olive on a warm
-sand base) live in `globals.css` under Tailwind v4's `@theme`. They generate
-utilities automatically — e.g. `bg-primary`, `text-on-surface`, `p-margin`,
-`text-display-lg`, `font-display`. Change a token once, it updates everywhere.
+## Quick facts
 
-Typography: **Playfair Display** (display), **Plus Jakarta Sans** (body),
-**Tajawal** (Arabic, auto-swapped in RTL) — loaded via `next/font`.
-
-### Internationalization
-
-- UI copy → `lib/i18n.ts` (`useLanguage().t`)
-- Data strings → `Localized` records in `lib/content.ts` (`useLanguage().pick(...)`)
-- Toggling locale updates `<html dir/lang>`, which drives the RTL CSS and the
-  Arabic font swap. Add a locale by extending `Locale` and the dictionaries.
-
-### Signature animation — Dispatch Network
-
-`components/hero/DispatchNetwork.tsx` renders an ambient canvas of kitchen hub
-nodes continuously dispatching order pulses along delivery routes — a living
-metaphor for the delivery-first OS. It is DPR-aware, pauses on tab blur,
-respects `prefers-reduced-motion`, and cleans up its RAF loop on unmount.
-
-Other motion: staggered hero load, scroll reveals (`Reveal`), an infinite brand
-marquee, a `CountUp` dispatch-time stat, and an animated inquiry modal — all
-degrade gracefully under reduced-motion.
-
-## Notes
-
-- **Locations:** Jeddah is currently the only operational district. Add more by
-  appending to `locations` in `lib/content.ts`.
-- Facility/logistics imagery is loaded from Unsplash (whitelisted in
-  `next.config.ts`); swap for owned assets before production.
+- Routes: `/{en|ar}/` + `/pricing`, `/faq`, `/contact`, `/about`, `/investors`.
+- All copy lives in `src/lib/i18n.ts` (UI strings) and `src/lib/content.ts`
+  (structured data), every string as `{ en, ar }`.
+- Internal links must go through `useLanguage().localize(href)`.
+- No backend — forms are client-side success states for now.
+- Design tokens: Tailwind v4 `@theme` in `src/app/globals.css`; components
+  use generated utilities only (`bg-primary`, `text-on-surface`, …).
