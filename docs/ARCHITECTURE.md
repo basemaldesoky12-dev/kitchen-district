@@ -11,8 +11,11 @@ deployed on Vercel.
   AGENTS.md). Notably: `proxy.ts` replaces `middleware.ts`.
 - React 19, TypeScript, Tailwind CSS v4 (tokens via `@theme` in
   `src/app/globals.css`), Motion 12 for animation.
-- No backend, no database, no test suite. Forms are client-side only
-  (`preventDefault` → success state). `// TODO: wire to API/email`.
+- No database, no test suite. One API route: `src/app/api/inquiry/route.ts` —
+  both forms (InquiryModal + ContactContent) POST via `src/lib/inquiry.ts`
+  and it emails the four kitchendistricts.com recipients through Brevo's
+  transactional API (`BREVO_API_KEY` env var). Includes a honeypot `website`
+  field for spam; forms have bilingual sending/error states.
 
 ## Routing & i18n
 
@@ -81,5 +84,5 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
 - Custom domain `kitchendistricts.com` DNS points to GoDaddy Website Builder,
   not Vercel — site is reachable at `kitchen-district.vercel.app` until fixed
   (apex A → 76.76.21.21, www CNAME → cname.vercel-dns.com).
-- Privacy/Terms footer links are `#` placeholders. Contact/inquiry forms have
-  no backend. Language choice isn't persisted beyond the URL.
+- Privacy/Terms footer links are `#` placeholders. Language choice isn't
+  persisted beyond the URL.

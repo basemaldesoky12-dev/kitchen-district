@@ -38,6 +38,6 @@ the code alone.
 - All copy lives in `src/lib/i18n.ts` (UI strings) and `src/lib/content.ts`
   (structured data), every string as `{ en, ar }`.
 - Internal links must go through `useLanguage().localize(href)`.
-- No backend — forms are client-side success states for now.
+- Forms email via `/api/inquiry` (Brevo transactional API, `BREVO_API_KEY`).
 - Design tokens: Tailwind v4 `@theme` in `src/app/globals.css`; components
   use generated utilities only (`bg-primary`, `text-on-surface`, …).
