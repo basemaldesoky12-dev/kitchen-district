@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InvestorsContent } from "@/components/investors/InvestorsContent";
+import type { Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Investors — Kitchen District",
-  description:
-    "The infrastructure behind the future of food. Kitchen District provides the physical and operational backbone modern food brands need to scale across the GCC.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata(locale, "investors");
+}
 
 export default function InvestorsPage() {
   return (

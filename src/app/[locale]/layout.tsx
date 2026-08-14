@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { Plus_Jakarta_Sans, Tajawal } from "next/font/google";
 import "../globals.css";
 import { Providers } from "@/components/Providers";
-import { locales, localeDir, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { dictionary, locales, localeDir, type Locale } from "@/lib/i18n";
+import { locations } from "@/lib/content";
+import { SITE_URL, pageMetadata } from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -19,17 +23,55 @@ const tajawal = Tajawal({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Kitchen District — Cloud Kitchen Infrastructure in Jeddah",
-  description:
-    "Fully equipped commercial kitchens for delivery food brands. Kitchen District provides the space, equipment, technology, and operations to launch and scale in Jeddah.",
-  openGraph: {
-    title: "Kitchen District",
-    description:
-      "Cloud kitchen infrastructure in Jeddah — fully equipped commercial kitchens for delivery food brands.",
-    type: "website",
-  },
-};
+/** Home metadata doubles as the segment-wide default; pages override per-route. */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) return {};
+  return pageMetadata(locale as Locale, "home");
+}
+
+/** Organization + Jeddah facility entities for Google's knowledge graph. */
+function organizationSchema(locale: Locale) {
+  const meta = dictionary[locale].meta;
+  const otherLocale: Locale = locale === "ar" ? "en" : "ar";
+  const jeddah = locations[0];
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: meta.siteName,
+        alternateName: dictionary[otherLocale].meta.siteName,
+        url: SITE_URL,
+        logo: `${SITE_URL}/kd-monogram.png`,
+        email: "support@kitchendistricts.com",
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#jeddah`,
+        name: meta.siteName,
+        description: meta.home.description,
+        url: `${SITE_URL}/${locale}`,
+        image: `${SITE_URL}/facilities/kitchen.jpg`,
+        parentOrganization: { "@id": `${SITE_URL}/#organization` },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: jeddah.district[locale],
+          addressLocality: jeddah.city[locale],
+          addressCountry: "SA",
+        },
+        areaServed: jeddah.city[locale],
+        openingHours: "Su-Th 09:00-18:00",
+      },
+    ],
+  };
+}
 
 export const dynamicParams = false;
 
@@ -65,7 +107,9 @@ export default async function RootLayout({
         />
       </head>
       <body className="tile-surface">
+        <JsonLd data={organizationSchema(lang)} />
         <Providers locale={lang}>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );

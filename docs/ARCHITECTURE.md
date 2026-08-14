@@ -81,8 +81,8 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
 - Contact details are live in `content.ts` (`contactChannels`): WhatsApp
   `+966 56 170 0278` and `support@kitchendistricts.com`. The landline row was
   dropped — WhatsApp is the only phone channel.
-- Custom domain `kitchendistricts.com` DNS points to GoDaddy Website Builder,
-  not Vercel — site is reachable at `kitchen-district.vercel.app` until fixed
-  (apex A → 76.76.21.21, www CNAME → cname.vercel-dns.com).
+- Custom domain `kitchendistricts.com` now resolves to Vercel and serves the
+  site; `www` and `kitchen-district.vercel.app` 308-redirect to the apex via
+  `next.config.ts` so ranking signals stay on one host.
 - Privacy/Terms footer links are `#` placeholders. Language choice isn't
   persisted beyond the URL.

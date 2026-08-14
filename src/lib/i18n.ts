@@ -23,6 +23,39 @@ export const languageToggleLabel: Record<Locale, string> = {
 
 export const dictionary = {
   en: {
+    meta: {
+      siteName: "Kitchen District",
+      home: {
+        title: "Cloud Kitchens in Jeddah — Kitchen District",
+        description:
+          "Fully equipped cloud kitchens for delivery food brands in Jeddah, Saudi Arabia. Kitchen District provides the space, equipment, technology, and operations to launch and scale.",
+      },
+      about: {
+        title: "About Kitchen District — Saudi Cloud Kitchen Operator",
+        description:
+          "Kitchen District builds and operates the professional cloud kitchens the next generation of Saudi food brands launch from — starting in Jeddah.",
+      },
+      pricing: {
+        title: "Cloud Kitchen Pricing & Plans in Jeddah — Kitchen District",
+        description:
+          "Simple monthly, quarterly, and annual plans for fully equipped cloud kitchens in Jeddah. Pick the footprint you need today — upgrade as your brand grows.",
+      },
+      faq: {
+        title: "Cloud Kitchen FAQ — Kitchen District",
+        description:
+          "Answers to the questions we hear most from new tenants — onboarding, equipment, delivery-app integrations, storage, and scaling in Jeddah.",
+      },
+      contact: {
+        title: "Contact Us — Book a Cloud Kitchen in Jeddah — Kitchen District",
+        description:
+          "Speak with our tenant success team about launching your delivery brand from a Kitchen District cloud kitchen in Jeddah. We respond within one business day.",
+      },
+      investors: {
+        title: "Investors — Kitchen District",
+        description:
+          "The infrastructure behind the future of food. Kitchen District provides the physical and operational backbone modern food brands need to scale across the GCC.",
+      },
+    },
     nav: {
       solutions: "Solutions",
       facilities: "Facilities",
@@ -38,7 +71,7 @@ export const dictionary = {
       badge: "Cloud kitchen infrastructure · Jeddah",
       titleLead: "Launch your food brand in a",
       titleAccent: "fully equipped",
-      titleTail: "commercial kitchen.",
+      titleTail: "cloud kitchen.",
       subtitle:
         "Fully equipped cloud kitchens and the technology to launch, operate, and scale delivery brands — without building infrastructure from scratch.",
       primaryCta: "Book a Kitchen",
@@ -178,6 +211,39 @@ export const dictionary = {
   },
 
   ar: {
+    meta: {
+      siteName: "كيتشن ديستريكت",
+      home: {
+        title: "مطابخ سحابية للإيجار في جدة — كيتشن ديستريكت",
+        description:
+          "مطابخ سحابية مجهّزة بالكامل لعلامات التوصيل في جدة — المساحة والمعدات والتقنية والتشغيل من كيتشن ديستريكت، لتنطلق علامتك الغذائية وتتوسع.",
+      },
+      about: {
+        title: "من نحن — كيتشن ديستريكت",
+        description:
+          "تبني كيتشن ديستريكت وتشغّل المطابخ السحابية الاحترافية التي تنطلق منها العلامات الغذائية السعودية — بدايةً من جدة.",
+      },
+      pricing: {
+        title: "أسعار وباقات المطابخ السحابية في جدة — كيتشن ديستريكت",
+        description:
+          "باقات شهرية وربع سنوية وسنوية لمطابخ سحابية مجهّزة بالكامل في جدة. اختر ما يناسبك اليوم وطوّر مع نمو علامتك.",
+      },
+      faq: {
+        title: "الأسئلة الشائعة عن المطابخ السحابية — كيتشن ديستريكت",
+        description:
+          "إجابات على أكثر أسئلة المستأجرين الجدد — التهيئة والمعدات وتكاملات تطبيقات التوصيل والتخزين والتوسع في جدة.",
+      },
+      contact: {
+        title: "تواصل معنا — احجز مطبخاً سحابياً في جدة — كيتشن ديستريكت",
+        description:
+          "تحدث مع فريق نجاح المستأجرين عن إطلاق علامتك من مطبخ سحابي في جدة — نرد خلال يوم عمل واحد.",
+      },
+      investors: {
+        title: "المستثمرون — كيتشن ديستريكت",
+        description:
+          "البنية التحتية خلف مستقبل الطعام. توفّر كيتشن ديستريكت الأساس المادي والتشغيلي الذي تحتاجه العلامات الحديثة للتوسع في الخليج.",
+      },
+    },
     nav: {
       solutions: "الحلول",
       facilities: "المرافق",

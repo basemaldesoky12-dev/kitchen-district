@@ -12,7 +12,8 @@ export function proxy(request: NextRequest) {
   if (hasLocale) return;
 
   request.nextUrl.pathname = `/${DEFAULT_LOCALE}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  // 308 so search engines treat the locale-less URL as permanently moved.
+  return NextResponse.redirect(request.nextUrl, 308);
 }
 
 export const config = {
