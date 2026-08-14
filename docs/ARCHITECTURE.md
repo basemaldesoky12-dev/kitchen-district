@@ -78,9 +78,9 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
 
 ## Known pending items
 
-- Contact details are **placeholders**: WhatsApp/phone `+966 xx`, email values
-  in `content.ts` (`contactChannels`). Real support email decided:
-  `support@kitchendistricts.com` (used in printed letterhead, not yet in site).
+- Contact details are live in `content.ts` (`contactChannels`): WhatsApp
+  `+966 56 170 0278` and `support@kitchendistricts.com`. The landline row was
+  dropped — WhatsApp is the only phone channel.
 - Custom domain `kitchendistricts.com` DNS points to GoDaddy Website Builder,
   not Vercel — site is reachable at `kitchen-district.vercel.app` until fixed
   (apex A → 76.76.21.21, www CNAME → cname.vercel-dns.com).

@@ -502,10 +502,10 @@ export const aboutValues: AboutValue[] = [
   },
 ];
 
-/** Contact channels (/contact). Values are placeholders until real details are provided. */
+/** Contact channels (/contact). */
 export interface ContactChannel {
   icon: string;
-  labelKey: "whatsapp" | "phone" | "email" | "hours" | "location";
+  labelKey: "whatsapp" | "email" | "hours" | "location";
   value?: string;
   href?: string;
 }
@@ -514,15 +514,14 @@ export const contactChannels: ContactChannel[] = [
   {
     icon: "chat",
     labelKey: "whatsapp",
-    value: "+966 50 000 0000",
-    href: "https://wa.me/966500000000",
+    value: "+966 56 170 0278",
+    href: "https://wa.me/966561700278",
   },
-  { icon: "call", labelKey: "phone", value: "+966 12 000 0000", href: "tel:+966120000000" },
   {
     icon: "mail",
     labelKey: "email",
-    value: "hello@kitchendistrict.sa",
-    href: "mailto:hello@kitchendistrict.sa",
+    value: "support@kitchendistricts.com",
+    href: "mailto:support@kitchendistricts.com",
   },
   { icon: "schedule", labelKey: "hours" },
   { icon: "location_on", labelKey: "location" },
