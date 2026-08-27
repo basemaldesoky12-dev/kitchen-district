@@ -28,8 +28,8 @@ export function InvestorsContent() {
 
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <span className="mb-3 flex items-center gap-2 text-label-md uppercase tracking-wider text-primary">
-                <span className="h-2 w-2 rounded-full bg-primary" />
+              <span className="mb-3 flex items-center gap-2 text-body-lg font-semibold uppercase tracking-wider text-primary">
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
                 {t.investors.eyebrow}
               </span>
               <h1 className="mb-6 max-w-xl font-display text-headline-mobile leading-tight text-on-surface md:text-display-lg">
@@ -68,13 +68,13 @@ export function InvestorsContent() {
             <div className="mt-12 grid grid-cols-2 overflow-hidden rounded-xl border border-outline-variant/40 bg-surface-container-lowest/70 backdrop-blur-sm md:grid-cols-4">
               {investorStats.map((stat, i) => (
                 <div
-                  key={stat.value}
+                  key={stat.label.en}
                   className={`p-6 md:p-8 ${
                     i > 0 ? "border-t border-outline-variant/40 md:border-l md:border-t-0" : ""
                   }`}
                 >
                   <p className="font-display text-headline-lg text-on-surface">
-                    {stat.value}
+                    {pick(stat.value)}
                   </p>
                   <p className="mt-2 text-caption uppercase tracking-wider text-on-surface-variant">
                     {pick(stat.label)}

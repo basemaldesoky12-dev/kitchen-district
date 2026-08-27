@@ -276,17 +276,29 @@ export const locations: LocationNode[] = [
   },
 ];
 
-/** Investor-facing headline metrics. */
+/** Investor-facing headline metrics. Figures follow the reader's numeral system. */
 export interface InvestorStat {
-  value: string;
+  value: Localized;
   label: Localized;
 }
 
 export const investorStats: InvestorStat[] = [
-  { value: "$1T+", label: { en: "Global food-service market", ar: "سوق خدمات الطعام العالمي" } },
-  { value: "18%+", label: { en: "GCC delivery CAGR", ar: "نمو التوصيل الخليجي السنوي" } },
-  { value: "−40%", label: { en: "Capex vs. standalone", ar: "توفير في رأس المال مقارنةً بالمطبخ المستقل" } },
-  { value: "GCC", label: { en: "Expansion roadmap", ar: "خارطة التوسّع" } },
+  {
+    value: { en: "$1T+", ar: "+١ تريليون $" },
+    label: { en: "Global food-service market", ar: "سوق خدمات الطعام العالمي" },
+  },
+  {
+    value: { en: "18%+", ar: "+٪١٨" },
+    label: { en: "GCC delivery CAGR", ar: "نمو التوصيل الخليجي السنوي" },
+  },
+  {
+    value: { en: "−40%", ar: "−٪٤٠" },
+    label: { en: "Capex vs. standalone", ar: "توفير في رأس المال مقارنةً بالمطبخ المستقل" },
+  },
+  {
+    value: { en: "GCC", ar: "الخليج" },
+    label: { en: "Expansion roadmap", ar: "خارطة التوسّع" },
+  },
 ];
 
 /** Longer-form investment thesis points (investors page). */
@@ -307,7 +319,7 @@ export const investorThesis: ThesisPoint[] = [
   },
   {
     icon: "hub",
-    title: { en: "Asset-light network", ar: "شبكة خفيفة الأصول" },
+    title: { en: "Asset-light operating network", ar: "شبكة تشغيلية قليلة الاعتماد على الأصول" },
     body: {
       en: "A repeatable district model that compounds utilization across brands and aggregators.",
       ar: "نموذج أحياء قابل للتكرار يضاعف الاستفادة عبر العلامات وتطبيقات التوصيل.",
@@ -315,10 +327,13 @@ export const investorThesis: ThesisPoint[] = [
   },
   {
     icon: "public",
-    title: { en: "Regional runway", ar: "مجال إقليمي" },
+    title: {
+      en: "Room to grow and expand regionally",
+      ar: "مساحة واسعة للنمو والتوسع إقليميًا",
+    },
     body: {
-      en: "Anchored in Jeddah with a clear roadmap across the Kingdom and the wider GCC.",
-      ar: "منطلقنا جدة مع خارطة واضحة عبر المملكة ومنطقة الخليج.",
+      en: "Anchored in Jeddah, with a clear roadmap to expand across the Kingdom and the GCC states.",
+      ar: "مرتكزًا في جدة، مع خارطة طريق واضحة للتوسع في مختلف أنحاء المملكة ودول مجلس التعاون الخليجي.",
     },
   },
 ];
@@ -335,45 +350,45 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
-    name: { en: "Starter", ar: "البداية" },
+    name: { en: "Starter", ar: "Starter" },
     description: {
-      en: "For solo operators and new food brands testing a concept.",
-      ar: "للمشغلين الأفراد والعلامات الجديدة التي تختبر فكرتها.",
+      en: "For solo operators and new food brands testing a new concept.",
+      ar: "للمشغلين الأفراد والعلامات التجارية الغذائية الجديدة التي تختبر مفهومًا جديدًا.",
     },
     bullets: [
-      { en: "Small kitchen station", ar: "محطة مطبخ صغيرة" },
+      { en: "Small kitchen", ar: "مطبخ صغير" },
       { en: "Shared cold storage", ar: "تخزين مبرد مشترك" },
-      { en: "Delivery integrations", ar: "تكاملات التوصيل" },
-      { en: "KD Ops — Basic", ar: "نظام KD Ops — الأساسي" },
+      { en: "Delivery app integrations", ar: "تكاملات مع تطبيقات التوصيل" },
+      { en: "KD Ops — Basic", ar: "عمليات KD — أساسي" },
     ],
   },
   {
     id: "growth",
-    name: { en: "Growth", ar: "النمو" },
+    name: { en: "Growth", ar: "Growth" },
     description: {
-      en: "For established brands scaling volume across delivery apps.",
-      ar: "للعلامات القائمة التي توسع أعمالها على تطبيقات التوصيل.",
+      en: "For established brands growing order volume across delivery apps.",
+      ar: "للعلامات التجارية القائمة التي تعمل على زيادة حجم الطلبات عبر تطبيقات التوصيل.",
     },
     bullets: [
-      { en: "Standard kitchen (25 – 40 m²)", ar: "مطبخ قياسي (٢٥ – ٤٠ م²)" },
-      { en: "Dedicated cold + freezer", ar: "تبريد وتجميد مخصص" },
-      { en: "Priority maintenance", ar: "صيانة ذات أولوية" },
-      { en: "KD Ops — Pro", ar: "نظام KD Ops — برو" },
+      { en: "Standard kitchen (25 – 40 m²)", ar: "مطبخ قياسي (25 – 40 م²)" },
+      { en: "Dedicated fridge and freezer", ar: "ثلاجة وفريزر مخصصان" },
+      { en: "Priority maintenance", ar: "أولوية في الصيانة" },
+      { en: "KD Ops — Pro", ar: "عمليات KD — احترافي" },
     ],
     featured: true,
   },
   {
     id: "enterprise",
-    name: { en: "Enterprise", ar: "المؤسسات" },
+    name: { en: "Enterprise", ar: "Enterprise" },
     description: {
       en: "For multi-brand operators and franchise groups.",
-      ar: "لمشغلي العلامات المتعددة ومجموعات الامتياز.",
+      ar: "لمشغلي العلامات التجارية المتعددة ومجموعات الامتياز التجاري.",
     },
     bullets: [
-      { en: "Custom layout (50 m²+)", ar: "تصميم مخصص (٥٠ م²+)" },
-      { en: "Multi-brand orders", ar: "تشغيل متعدد العلامات" },
-      { en: "Dedicated success manager", ar: "مدير نجاح مخصص" },
-      { en: "KD Ops — Enterprise", ar: "نظام KD Ops — للمؤسسات" },
+      { en: "Custom layout (50 m² and above)", ar: "تصميم مخصص (50 م² فأكثر)" },
+      { en: "Multi-brand orders", ar: "طلبات متعددة العلامات" },
+      { en: "Dedicated customer success manager", ar: "مدير نجاح عملاء مخصص" },
+      { en: "KD Ops — Enterprise", ar: "عمليات KD — للمؤسسات" },
     ],
   },
 ];

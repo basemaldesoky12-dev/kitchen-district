@@ -56,7 +56,9 @@ deployed on Vercel.
   (exclusive-open FAQ), `PageHeader` (subpage hero), `field.ts` (shared form
   field classes, also used by `modal/InquiryModal`).
 - Global inquiry modal: `context/ModalProvider` + `modal/InquiryModal` —
-  every "Book a Kitchen" / "Request a Quote" CTA opens it via `useModal()`.
+  every "Book a Kitchen" / "Request a Quote" CTA opens it via `useModal()`,
+  **except** the locations card (`sections/Expansion.tsx`), whose CTA links to
+  `localize("/contact")` so the lead lands on the fuller sales form.
 - Hero canvas animation: `components/hero/TileGrid.tsx` — 56px tiles (must
   match `.tile-surface` background-size), `ACCENTS` array holds glow colors,
   respects reduced motion / visibility / DPR.

@@ -2,14 +2,13 @@
 
 import { locations } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
-import { useModal } from "@/context/ModalProvider";
+import { formatNumber } from "@/lib/numerals";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Expansion() {
-  const { t, pick } = useLanguage();
-  const { openModal } = useModal();
+  const { t, pick, locale, localize } = useLanguage();
 
   return (
     <section id="locations" className="scroll-mt-24 px-margin py-16">
@@ -56,11 +55,16 @@ export function Expansion() {
                     </p>
                     <div className="flex items-center gap-1 text-label-md text-on-surface-variant">
                       <Icon name="storefront" size={18} />
-                      {location.kitchens} {t.common.kitchensSuffix}
+                      {formatNumber(location.kitchens, locale)}{" "}
+                      {t.common.kitchensSuffix}
                     </div>
                   </div>
 
-                  <Button onClick={openModal} className="group shrink-0">
+                  <Button
+                    as="a"
+                    href={localize("/contact")}
+                    className="group shrink-0"
+                  >
                     {t.hero.primaryCta}
                     <Icon
                       name="arrow_forward"

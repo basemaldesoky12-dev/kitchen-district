@@ -78,8 +78,17 @@ Rules:
   - "aggregators" → «تطبيقات التوصيل» (not «منصات التجميع»).
   - Positioning phrase: «المطابخ السحابية» (cloud kitchens) — NOT
     «العلامات الغذائية» (food brands); hero uses «أطلق مطبخك السحابي».
-  - Pricing tier "Starter" = «البداية» (not «المبتدئ»).
-  - Numbers in AR footer use Arabic-Indic numerals («© ٢٠٢٦»).
+  - Pricing tiers keep their Latin names in AR too — Starter / Growth /
+    Enterprise (owner call, Aug 2026; supersedes the earlier «البداية»), and
+    their bullets say «عمليات KD — أساسي/احترافي/للمؤسسات» with Latin
+    measurements («٢٥ – ٤٠ م²» → «25 – 40 م²»).
+  - Everywhere else, AR figures use Arabic-Indic numerals: footer year
+    («© ٢٠٢٦»), contact hours, facility tags, the investor stat band
+    («+١ تريليون $», «+٪١٨», «−٪٤٠», «الخليج»), and dynamic counts via
+    `formatNumber(value, locale)` in `src/lib/numerals.ts`.
+  - "asset-light" → «قليل الاعتماد على الأصول» (not «خفيف الأصول»).
+  - Investor CTA is «فريق علاقات المستثمرين»; the IR band heading is
+    «تحدّث مع فريقنا.» so the phrase isn't repeated twice in one block.
 - The reference site the owner likes (content + structure source for the
   Pricing/FAQ/Contact/About pages): https://cloud-kitchen-sparkle.lovable.app/
 

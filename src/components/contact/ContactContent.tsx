@@ -133,6 +133,7 @@ export function ContactContent() {
                       rows={5}
                       name="message"
                       className={fieldClass}
+                      placeholder={t.contact.form.messagePlaceholder}
                     />
                   </div>
                   <div className="hidden" aria-hidden="true">

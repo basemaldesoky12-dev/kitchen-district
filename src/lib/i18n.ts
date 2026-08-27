@@ -113,10 +113,10 @@ export const dictionary = {
       title: "The infrastructure behind modern food brands.",
       body: "Food delivery is reshaping the restaurant industry. Kitchen District provides the physical infrastructure and operational backbone that modern food brands need to grow — efficiently and at scale.",
       ctaPrimary: "Investor relations",
-      ctaSecondary: "Contact IR team",
+      ctaSecondary: "Investor relations team",
       thesisEyebrow: "Why invest",
-      thesisTitle: "An asset-light model in a growing market.",
-      contactTitle: "Talk to our investor relations team.",
+      thesisTitle: "An asset-light business model in a growing market.",
+      contactTitle: "Talk to our team.",
       contactBody:
         "We share detailed materials with qualified investors on request. Reach out and we'll get back to you.",
       backHome: "Back to home",
@@ -145,7 +145,7 @@ export const dictionary = {
       subtitle: "Pick the footprint you need today — upgrade as your brand grows.",
       note: "Pricing depends on kitchen size, location, and duration. Speak to our team for a tailored quote.",
       cta: "Request a Quote",
-      featuredBadge: "Popular",
+      featuredBadge: "Most popular",
     },
     faq: {
       eyebrow: "FAQ",
@@ -165,6 +165,8 @@ export const dictionary = {
         email: "Email",
         branch: "Preferred branch",
         message: "Message",
+        messagePlaceholder:
+          "Tell us about your kitchen — the size you need, preferred district, and when you plan to start.",
         submit: "Send message",
         sending: "Sending…",
         success: "Thank you — we will be in touch shortly.",
@@ -301,10 +303,10 @@ export const dictionary = {
       title: "البنية التحتية خلف المطابخ السحابية الحديثة.",
       body: "يعيد توصيل الطعام تشكيل قطاع المطاعم. توفّر كيتشن ديستريكت البنية التحتية المادية والعمود التشغيلي الذي تحتاجه العلامات الحديثة للنمو — بكفاءة وعلى نطاق واسع.",
       ctaPrimary: "علاقات المستثمرين",
-      ctaSecondary: "تواصل مع فريق العلاقات",
+      ctaSecondary: "فريق علاقات المستثمرين",
       thesisEyebrow: "لماذا الاستثمار معنا",
-      thesisTitle: "نموذج خفيف الأصول في سوق متنامٍ.",
-      contactTitle: "تحدّث مع فريق علاقات المستثمرين.",
+      thesisTitle: "نموذج أعمال قليل الاعتماد على الأصول في سوق متنامٍ.",
+      contactTitle: "تحدّث مع فريقنا.",
       contactBody:
         "نشارك المواد التفصيلية مع المستثمرين المؤهلين عند الطلب. تواصل معنا وسنرد عليك.",
       backHome: "العودة للرئيسية",
@@ -333,7 +335,7 @@ export const dictionary = {
       subtitle: "اختر ما يناسبك اليوم — وطوّر مع نمو علامتك.",
       note: "يعتمد السعر على حجم المطبخ والموقع والمدة. تواصل معنا لعرض مخصص.",
       cta: "اطلب عرض سعر",
-      featuredBadge: "الأكثر طلباً",
+      featuredBadge: "الأكثر شيوعًا",
     },
     faq: {
       eyebrow: "الأسئلة الشائعة",
@@ -353,6 +355,8 @@ export const dictionary = {
         email: "البريد الإلكتروني",
         branch: "الفرع المفضل",
         message: "الرسالة",
+        messagePlaceholder:
+          "أخبرنا عن مطبخك — المساحة التي تحتاجها، الحي المفضل، وموعد البدء.",
         submit: "إرسال",
         sending: "جارٍ الإرسال…",
         success: "شكراً لك — سنتواصل معك قريباً.",

@@ -17,8 +17,8 @@ export function InvestorTeaser() {
           <div className="rounded-xl border border-outline-variant/40 bg-surface-container-lowest/70 p-8 backdrop-blur-sm md:p-12">
             {/* Copy — market stats live on the /investors page */}
             <div>
-              <span className="mb-3 flex items-center gap-2 text-label-md uppercase tracking-wider text-primary">
-                <span className="h-2 w-2 rounded-full bg-primary" />
+              <span className="mb-3 flex items-center gap-2 text-body-lg font-semibold uppercase tracking-wider text-primary">
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
                 {t.investors.eyebrow}
               </span>
               <h2 className="mb-6 font-display text-headline-lg text-on-surface md:text-display-lg">
