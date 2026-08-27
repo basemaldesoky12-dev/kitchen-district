@@ -43,8 +43,12 @@ function SolutionCard({ solution }: { solution: Solution }) {
         </p>
         <ul className="mt-auto grid gap-3 text-label-md text-on-surface-variant sm:grid-cols-2">
           {solution.bullets?.map((bullet) => (
-            <li key={pick(bullet.text)} className="flex items-center gap-3">
-              <Icon name="check_circle" size={18} className="text-secondary" />
+            <li key={pick(bullet.text)} className="flex items-start gap-3">
+              <Icon
+                name="check_circle"
+                size={18}
+                className="shrink-0 leading-5 text-secondary"
+              />
               {pick(bullet.text)}
             </li>
           ))}

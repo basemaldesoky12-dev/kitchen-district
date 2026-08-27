@@ -208,6 +208,12 @@ export const solutions: Solution[] = [
       {
         text: { en: "24/7 maintenance support", ar: "دعم صيانة على مدار الساعة" },
       },
+      {
+        text: {
+          en: "Secure & monitored: 360° CCTV surveillance and secure, controlled access",
+          ar: "آمن ومراقب: كاميرات مراقبة ٣٦٠° ودخول آمن ومقيّد",
+        },
+      },
     ],
   },
   {

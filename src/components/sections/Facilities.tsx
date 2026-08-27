@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { facilityCards } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
-import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Facilities() {
@@ -42,18 +41,13 @@ export function Facilities() {
                   <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
                 </div>
 
-                <div className="absolute inset-x-6 bottom-6 flex items-end justify-between">
-                  <div>
-                    <p className="mb-1 text-caption uppercase tracking-wider text-inverse-on-surface/80">
-                      {pick(card.tag)}
-                    </p>
-                    <h3 className="font-display text-title-md text-inverse-on-surface">
-                      {pick(card.title)}
-                    </h3>
-                  </div>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-container-lowest/90 text-on-surface transition-transform duration-300 group-hover:-translate-y-1">
-                    <Icon name="arrow_outward" size={18} className="rtl:rotate-90" />
-                  </span>
+                <div className="absolute inset-x-6 bottom-6">
+                  <p className="mb-1 text-caption uppercase tracking-wider text-inverse-on-surface/80">
+                    {pick(card.tag)}
+                  </p>
+                  <h3 className="font-display text-title-md text-inverse-on-surface">
+                    {pick(card.title)}
+                  </h3>
                 </div>
               </div>
             </Reveal>
