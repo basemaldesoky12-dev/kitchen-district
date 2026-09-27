@@ -1,3 +1,10 @@
+import { after } from "next/server";
+import { createZohoLead } from "@/lib/zoho";
+import type { InquiryFields, InquirySource } from "@/lib/inquiry";
+
+// Email may take 10 seconds, then background token refresh + CRM another 20.
+export const maxDuration = 45;
+
 const RECIPIENTS = [
   "abdullah@kitchendistricts.com",
   "support@kitchendistricts.com",
@@ -27,12 +34,24 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, "&quot;");
 
 export async function POST(request: Request) {
-  let payload: InquiryPayload;
+  let body: unknown;
   try {
-    payload = await request.json();
+    body = await request.json();
   } catch {
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return Response.json({ error: "Invalid inquiry" }, { status: 400 });
+  }
+  const keys = ["source", "name", "brand", "city", "phone", "email", "branch", "message", "website"] as const;
+  for (const key of keys) {
+    const value = (body as Record<string, unknown>)[key];
+    if (value !== undefined && typeof value !== "string") {
+      return Response.json({ error: "Invalid inquiry field" }, { status: 400 });
+    }
+  }
+  const payload = body as InquiryPayload;
 
   const name = payload.name?.trim();
   if (!name) {
@@ -44,13 +63,44 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    console.error("BREVO_API_KEY is not set");
-    return Response.json({ error: "Email service unavailable" }, { status: 502 });
+  if (payload.source !== "modal" && payload.source !== "contact") {
+    return Response.json({ error: "Invalid inquiry source" }, { status: 400 });
   }
 
-  const source = payload.source === "contact" ? "Contact page" : "Inquiry modal";
+  const fields: InquiryFields = { ...payload, name };
+  const source = payload.source;
+  // Schedule before sending email so CRM is attempted even if email fails.
+  // Next.js keeps this task alive after the response; it cannot change it.
+  try {
+    after(async () => {
+      try {
+        await createZohoLead(source, fields);
+      } catch {
+        console.error("Inquiry CRM delivery failed");
+      }
+    });
+  } catch {
+    console.error("Inquiry CRM scheduling failed");
+  }
+
+  // Only email delivery determines the visitor's response.
+  try {
+    await sendInquiryEmail(source, fields);
+  } catch {
+    console.error("Inquiry email delivery failed");
+    return Response.json({ error: "Email send failed" }, { status: 502 });
+  }
+  return Response.json({ ok: true });
+}
+
+async function sendInquiryEmail(inquirySource: InquirySource, payload: InquiryFields) {
+  const name = payload.name;
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) {
+    throw new Error("BREVO_API_KEY is not set");
+  }
+
+  const source = inquirySource === "contact" ? "Contact page" : "Inquiry modal";
   const rows: [string, string | undefined][] = [
     ["Source", source],
     ["Name", name],
@@ -75,6 +125,7 @@ ${rows
   const submitterEmail = payload.email?.trim();
   const res = await fetch(BREVO_ENDPOINT, {
     method: "POST",
+    signal: AbortSignal.timeout(10_000),
     headers: { "api-key": apiKey, "content-type": "application/json" },
     body: JSON.stringify({
       sender: {
@@ -89,8 +140,6 @@ ${rows
   });
 
   if (!res.ok) {
-    console.error("Brevo send failed", res.status, await res.text());
-    return Response.json({ error: "Email send failed" }, { status: 502 });
+    throw new Error(`Brevo send failed (HTTP ${res.status})`);
   }
-  return Response.json({ ok: true });
 }
