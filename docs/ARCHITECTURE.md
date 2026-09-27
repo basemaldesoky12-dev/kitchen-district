@@ -14,8 +14,12 @@ deployed on Vercel.
 - No database, no test suite. One API route: `src/app/api/inquiry/route.ts` —
   both forms (InquiryModal + ContactContent) POST via `src/lib/inquiry.ts`
   and it emails the four kitchendistricts.com recipients through Brevo's
-  transactional API (`BREVO_API_KEY` env var). Includes a honeypot `website`
-  field for spam; forms have bilingual sending/error states.
+  transactional API (`BREVO_API_KEY` env var), while creating a Zoho CRM lead
+  through `src/lib/zoho.ts`. See [ZOHO.md](ZOHO.md) for credentials and failure
+  handling. Email alone determines the form response; CRM runs independently
+  after the response through Next.js `after`. There is no automatic retry queue.
+  Includes a honeypot `website` field for spam;
+  forms have bilingual sending/error states.
 
 ## Routing & i18n
 
