@@ -1,6 +1,6 @@
 # Zoho CRM helper
 
-`src/lib/zoho.ts` exports `createZohoLead(source, fields, options?)` and returns
+`src/lib/zoho.ts` exports `createZohoLead(source, fields)` and returns
 the created lead ID. `/api/inquiry` calls it for both website forms alongside
 the existing Brevo notification. Email delivery alone determines the form's
 success/error response. CRM creation runs after the response via Next.js `after`.
@@ -27,9 +27,10 @@ const leadId = await createZohoLead(source, fields);
 
 The full submitted name maps to `Last_Name`; brand, city, phone, and email map
 to their standard CRM fields. Blank optional fields are omitted. Message,
-form source, and preferred branch are preserved in `Description` by default.
-Once custom fields exist, supply their actual API names through `sourceField`
-and `branchField` in the third argument. Check the CRM layout for additional
+form source are preserved in `Description`.
+Inquiry from is preserved in `Lead Source`.
+Preferred branch is preserved in `Preferred branch`.
+Check the CRM layout for additional
 mandatory fields when configuring the CRM. CRM automation follows Zoho's
 default API behavior because the helper does not override `trigger`.
 

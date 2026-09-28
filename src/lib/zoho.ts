@@ -2,11 +2,6 @@ import "server-only";
 
 import type { InquiryFields, InquirySource } from "./inquiry";
 
-type LeadOptions = {
-  sourceField?: string;
-  branchField?: string;
-};
-
 type AccessToken = { value: string; expiresAt: number };
 let cachedToken: AccessToken | undefined;
 let pendingToken: Promise<AccessToken> | undefined;
@@ -91,7 +86,6 @@ async function accessToken(): Promise<AccessToken> {
 export async function createZohoLead(
   source: InquirySource,
   fields: InquiryFields,
-  options: LeadOptions = {},
 ): Promise<string> {
   const name = fields.name.trim();
   if (!name) throw new Error("A lead name is required");
@@ -100,35 +94,16 @@ export async function createZohoLead(
     throw new Error("Invalid inquiry source");
   }
 
-  const lead: Record<string, string> = { Last_Name: name };
-  const mappings = {
-    Company: fields.brand,
-    City: fields.city,
-    Phone: fields.phone,
-    Email: fields.email,
+  const lead = {
+    Last_Name: name,
+    Company: fields.brand?.trim() || undefined,
+    City: fields.city?.trim() || undefined,
+    Phone: fields.phone?.trim() || undefined,
+    Email: fields.email?.trim() || undefined,
+    Description: fields.message?.trim(),
+    Lead_Source: source === "contact" ? "Contact page" : "Inquiry modal",
+    Preferred_Branch: fields?.branch?.trim() || undefined
   };
-  for (const [key, value] of Object.entries(mappings)) {
-    if (value?.trim()) lead[key] = value.trim();
-  }
-
-  const description = [fields.message?.trim()].filter(Boolean);
-  const reserved = new Set(["Last_Name", ...Object.keys(mappings), "Description"]);
-  for (const [field, label, value] of [
-    [options.sourceField, "Website form", source === "contact" ? "Contact page" : "Inquiry modal"],
-    [options.branchField, "Preferred branch", fields.branch?.trim()],
-  ]) {
-    if (field) {
-      if (!/^[A-Za-z][A-Za-z0-9_]*$/.test(field) || reserved.has(field)) {
-        throw new Error("Invalid or conflicting Zoho custom field API name");
-      }
-      reserved.add(field);
-      if (value) lead[field] = value;
-    } else if (value) {
-      // Preserve these values even before custom CRM fields are configured.
-      description.push(`${label}: ${value}`);
-    }
-  }
-  if (description.length) lead.Description = description.join("\n\n");
 
   const apiDomain = origin("ZOHO_API_DOMAIN");
   const token = await accessToken();
@@ -154,5 +129,4 @@ export async function createZohoLead(
   }
   return id;
 }
-
 
