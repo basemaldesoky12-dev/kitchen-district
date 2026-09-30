@@ -21,6 +21,7 @@ export function FaqContent() {
 
         <Reveal>
           <Accordion
+            headingLevel="h2"
             items={faqItems.map((item) => ({
               id: item.id,
               question: pick(item.question),

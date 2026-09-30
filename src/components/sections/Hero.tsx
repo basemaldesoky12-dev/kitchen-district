@@ -66,7 +66,9 @@ export function Hero() {
           className="mb-6 max-w-4xl font-display text-headline-mobile leading-tight tracking-tight text-on-surface md:text-display-lg"
         >
           {t.hero.titleLead}{" "}
-          <span className="italic text-primary">{t.hero.titleAccent}</span>{" "}
+          <span className="whitespace-nowrap italic text-primary">
+            {t.hero.titleAccent}
+          </span>{" "}
           {t.hero.titleTail}
         </motion.h1>
 

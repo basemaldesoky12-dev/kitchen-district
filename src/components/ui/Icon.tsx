@@ -13,6 +13,9 @@ interface IconProps {
 /**
  * Thin wrapper over the Material Symbols Outlined icon font.
  * Decorative by default (aria-hidden) so screen readers skip it.
+ * The ligature name is drawn by CSS (`::before { content: attr(data-icon) }`)
+ * instead of rendered as text, so words like "rocket_launch" never become
+ * page content that search engines index.
  */
 export function Icon({
   name,
@@ -24,13 +27,12 @@ export function Icon({
   return (
     <span
       aria-hidden={ariaHidden}
+      data-icon={name}
       className={clsx("material-symbols-outlined", className)}
       style={{
         fontSize: size,
         fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${size}`,
       }}
-    >
-      {name}
-    </span>
+    />
   );
 }

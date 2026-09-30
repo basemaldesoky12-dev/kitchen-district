@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { contactChannels } from "@/lib/content";
+import { contactChannels, socialLinks } from "@/lib/content";
 import { useLanguage } from "@/context/LanguageProvider";
 
 /* WhatsApp brand glyph (Simple Icons, CC0). */
@@ -18,6 +18,29 @@ function WhatsAppIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/* Instagram glyph (outline, Lucide-style). */
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
+const socialButton =
+  "inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-on-primary shadow-sm transition-all hover:bg-primary-container hover:shadow-md";
 
 export function Footer() {
   const { t, localize } = useLanguage();
@@ -56,17 +79,28 @@ export function Footer() {
           <p className="text-caption text-on-surface-variant">
             {t.footer.tagline}
           </p>
-          {whatsapp?.href && (
+          <div className="mt-4 flex gap-3">
+            {whatsapp?.href && (
+              <a
+                href={whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.contact.channels.whatsapp}
+                className={socialButton}
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+              </a>
+            )}
             <a
-              href={whatsapp.href}
+              href={socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={t.contact.channels.whatsapp}
-              className="mt-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-on-primary shadow-sm transition-all hover:bg-primary-container hover:shadow-md"
+              aria-label={t.footer.instagram}
+              className={socialButton}
             >
-              <WhatsAppIcon className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5" />
             </a>
-          )}
+          </div>
         </div>
         <div className="flex flex-col justify-end gap-8 md:col-span-3 md:flex-row md:gap-16">
           {links.map((link) => (

@@ -6,7 +6,7 @@ import "../globals.css";
 import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { dictionary, locales, localeDir, type Locale } from "@/lib/i18n";
-import { locations } from "@/lib/content";
+import { contactChannels, locations, socialLinks } from "@/lib/content";
 import { SITE_URL, pageMetadata } from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -34,39 +34,55 @@ export async function generateMetadata({
   return pageMetadata(locale as Locale, "home");
 }
 
-/** Organization + Jeddah facility entities for Google's knowledge graph. */
+/** Organization, WebSite, and Jeddah facility entities for Google's knowledge graph. */
 function organizationSchema(locale: Locale) {
   const meta = dictionary[locale].meta;
-  const otherLocale: Locale = locale === "ar" ? "en" : "ar";
+  const alternateName = dictionary[locale === "ar" ? "en" : "ar"].meta.siteName;
   const jeddah = locations[0];
+  const telephone = contactChannels.find((c) => c.labelKey === "whatsapp")?.value;
+  const orgId = `${SITE_URL}/#organization`;
 
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${SITE_URL}/#organization`,
+        "@id": orgId,
         name: meta.siteName,
-        alternateName: dictionary[otherLocale].meta.siteName,
+        alternateName,
         url: SITE_URL,
         logo: `${SITE_URL}/kd-monogram.png`,
         email: "support.kd@kitchendistricts.com",
+        telephone,
+        sameAs: Object.values(socialLinks),
+      },
+      {
+        // Lets Google show the localized brand as the site name in results.
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: meta.siteName,
+        alternateName,
+        inLanguage: locale,
+        publisher: { "@id": orgId },
       },
       {
         "@type": "LocalBusiness",
         "@id": `${SITE_URL}/#jeddah`,
         name: meta.siteName,
+        alternateName,
         description: meta.home.description,
         url: `${SITE_URL}/${locale}`,
         image: `${SITE_URL}/facilities/kitchen.jpg`,
-        parentOrganization: { "@id": `${SITE_URL}/#organization` },
+        telephone,
+        parentOrganization: { "@id": orgId },
         address: {
           "@type": "PostalAddress",
           streetAddress: jeddah.district[locale],
           addressLocality: jeddah.city[locale],
           addressCountry: "SA",
         },
-        areaServed: jeddah.city[locale],
+        areaServed: { "@type": "City", name: jeddah.city[locale] },
         openingHours: "Su-Th 09:00-18:00",
       },
     ],

@@ -177,6 +177,11 @@ body {
   user-select: none;
 }
 
+/* Icon.tsx passes the ligature name here so it stays out of the page text. */
+.material-symbols-outlined[data-icon]::before {
+  content: attr(data-icon);
+}
+
 /* ---- Reusable surface treatments ---- */
 .glass-panel {
   background: rgba(245, 244, 241, 0.75);

@@ -6,6 +6,7 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { Solutions } from "@/components/sections/Solutions";
 import { Facilities } from "@/components/sections/Facilities";
 import { Expansion } from "@/components/sections/Expansion";
+import { HomeFaq } from "@/components/sections/HomeFaq";
 import { InvestorTeaser } from "@/components/sections/InvestorTeaser";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Facilities />
         <Solutions />
         <Expansion />
+        <HomeFaq />
         <InvestorTeaser />
         {/* Concept marquee moved to the bottom, per request */}
         <TrustStrip />

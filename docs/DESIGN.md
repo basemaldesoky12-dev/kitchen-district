@@ -78,6 +78,14 @@ Rules:
   - "aggregators" → «تطبيقات التوصيل» (not «منصات التجميع»).
   - Positioning phrase: «المطابخ السحابية» (cloud kitchens) — NOT
     «العلامات الغذائية» (food brands); hero uses «أطلق مطبخك السحابي».
+  - AR hero H1 (owner-approved 2026-09-30, for Arabic search): «أطلق مطبخك السحابي
+    **في جدة** من مساحة تجارية مجهّزة بالكامل.» — Jeddah is the green accent; the
+    badge reads «مطابخ سحابية للإيجار · جدة».
+  - Arabic section headings may be descriptive and keyword-bearing where the English
+    is punchy — Arabic search needs the phrases, and the English already ranks:
+    «مرافق مطابخنا السحابية في جدة» (EN "Built for high performance."),
+    «مواقع مطابخنا السحابية» (EN "Expanding."). Don't turn them back into literal
+    translations.
   - Pricing tiers keep their Latin names in AR too — Starter / Growth /
     Enterprise (owner call, Aug 2026; supersedes the earlier «البداية»), and
     their bullets say «عمليات KD — أساسي/احترافي/للمؤسسات» with Latin

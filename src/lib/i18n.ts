@@ -108,6 +108,12 @@ export const dictionary = {
       subtitle:
         "Put your brand where the demand is. Our network starts in Jeddah, with new districts planned across the Kingdom.",
     },
+    homeFaq: {
+      eyebrow: "FAQ",
+      title: "Common questions about cloud kitchens",
+      subtitle: "Short answers before you rent a cloud kitchen in Jeddah.",
+      cta: "All questions",
+    },
     investors: {
       eyebrow: "For investors",
       title: "The infrastructure behind modern food brands.",
@@ -195,6 +201,7 @@ export const dictionary = {
     },
     footer: {
       tagline: "Cloud kitchen infrastructure in Jeddah.",
+      instagram: "Instagram",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       pricing: "Pricing",
@@ -216,9 +223,9 @@ export const dictionary = {
     meta: {
       siteName: "كيتشن ديستريكت",
       home: {
-        title: "مطابخ سحابية للإيجار في جدة — كيتشن ديستريكت",
+        title: "مطابخ سحابية للإيجار في جدة، السعودية — كيتشن ديستريكت",
         description:
-          "مطابخ سحابية مجهّزة بالكامل لعلامات التوصيل في جدة — المساحة والمعدات والتقنية والتشغيل من كيتشن ديستريكت، لتنطلق علامتك الغذائية وتتوسع.",
+          "مطابخ سحابية مجهّزة بالكامل للإيجار في جدة: ١٢ مطبخاً في حي الصفا، عقود مرنة، والمرافق مشمولة. احجز زيارة واحصل على عرض سعر من كيتشن ديستريكت.",
       },
       about: {
         title: "من نحن — كيتشن ديستريكت",
@@ -258,12 +265,12 @@ export const dictionary = {
       launch: "احجز مطبخك",
     },
     hero: {
-      badge: "البنية التحتية للمطابخ السحابية · جدة",
+      badge: "مطابخ سحابية للإيجار · جدة",
       titleLead: "أطلق مطبخك السحابي",
-      titleAccent: "في مساحة تجارية",
-      titleTail: "مجهّزة بالكامل.",
+      titleAccent: "في جدة",
+      titleTail: "من مساحة تجارية مجهّزة بالكامل.",
       subtitle:
-        "مطابخ سحابية مجهّزة بالكامل والتقنية اللازمة لإطلاق وتشغيل وتوسيع علامات التوصيل — دون بناء البنية التحتية من الصفر.",
+        "مطابخ سحابية مجهّزة بالكامل للإيجار في جدة، مع التقنية اللازمة لإطلاق علامات التوصيل وتشغيلها وتوسيعها — دون بناء البنية التحتية من الصفر.",
       primaryCta: "احجز مطبخك",
       secondaryCta: "استكشف المرافق",
     },
@@ -286,7 +293,7 @@ export const dictionary = {
     },
     facilities: {
       eyebrow: "المرافق",
-      title: "مبنية للأداء العالي.",
+      title: "مرافق مطابخنا السحابية في جدة",
       subtitle:
         "مساحات مصممة لسرعة تجهيز الطلبات وسلامة الغذاء واستقرار التشغيل.",
     },
@@ -294,9 +301,15 @@ export const dictionary = {
       eyebrow: "منصة مطابخ واحدة لكل أنواع مطاعم التوصيل",
     },
     expansion: {
-      title: "نتوسع.",
+      title: "مواقع مطابخنا السحابية",
       subtitle:
-        "ضع علامتك حيث يوجد الطلب. تبدأ شبكتنا من جدة، مع خطط لأحياء جديدة في المملكة.",
+        "ضع علامتك حيث يوجد الطلب. تبدأ شبكتنا من حي الصفا في جدة، مع خطط لأحياء جديدة في جدة والرياض والدمام.",
+    },
+    homeFaq: {
+      eyebrow: "الأسئلة الشائعة",
+      title: "أسئلة شائعة عن المطابخ السحابية",
+      subtitle: "إجابات مختصرة قبل أن تستأجر مطبخك السحابي في جدة.",
+      cta: "جميع الأسئلة",
     },
     investors: {
       eyebrow: "للمستثمرين",
@@ -385,6 +398,7 @@ export const dictionary = {
     },
     footer: {
       tagline: "البنية التحتية للمطابخ السحابية في جدة.",
+      instagram: "إنستغرام",
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة",
       pricing: "الأسعار",

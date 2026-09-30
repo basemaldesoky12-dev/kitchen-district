@@ -6,17 +6,26 @@ export const SITE_URL = "https://kitchendistricts.com";
 
 export type MetaPage = Exclude<keyof (typeof dictionary)["en"]["meta"], "siteName">;
 
-/** Route + sitemap hints per indexable page. Paths are locale-relative. */
+/**
+ * Route + sitemap hints per indexable page. Paths are locale-relative.
+ * `lastModified` is the date the page's content last changed — bump it with
+ * content edits. (A build-time date on every URL teaches Google to ignore it.)
+ */
 export const seoPages: Record<
   MetaPage,
-  { path: string; priority: number; changeFrequency: "weekly" | "monthly" }
+  {
+    path: string;
+    priority: number;
+    changeFrequency: "weekly" | "monthly";
+    lastModified: string;
+  }
 > = {
-  home: { path: "", priority: 1, changeFrequency: "weekly" },
-  pricing: { path: "/pricing", priority: 0.8, changeFrequency: "monthly" },
-  about: { path: "/about", priority: 0.7, changeFrequency: "monthly" },
-  faq: { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
-  contact: { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
-  investors: { path: "/investors", priority: 0.5, changeFrequency: "monthly" },
+  home: { path: "", priority: 1, changeFrequency: "weekly", lastModified: "2026-09-30" },
+  pricing: { path: "/pricing", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-28" },
+  about: { path: "/about", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-08-15" },
+  faq: { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-09-30" },
+  contact: { path: "/contact", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-08-28" },
+  investors: { path: "/investors", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-08-28" },
 };
 
 /** hreflang set for one path; x-default points at the site default locale (ar). */

@@ -404,9 +404,68 @@ export interface FaqItem {
   id: string;
   question: Localized;
   answer: Localized;
+  /** Also shown in the homepage FAQ section. */
+  home?: boolean;
 }
 
 export const faqItems: FaqItem[] = [
+  {
+    id: "what-is",
+    home: true,
+    question: { en: "What is a cloud kitchen?", ar: "ما هو المطبخ السحابي؟" },
+    answer: {
+      en: "A commercial kitchen built for delivery only — no dining room and no walk-in customers. A food brand rents a ready kitchen and sells through delivery apps such as HungerStation, Jahez, and The Chefz.",
+      ar: "مطبخ تجاري مخصص لتجهيز طلبات التوصيل فقط، بلا صالة طعام ولا استقبال للزبائن. تستأجر العلامة مطبخاً جاهزاً وتبيع عبر تطبيقات التوصيل مثل هنقرستيشن وجاهز والشيفز.",
+    },
+  },
+  {
+    id: "rent-cost",
+    home: true,
+    question: {
+      en: "How much does it cost to rent a cloud kitchen in Jeddah?",
+      ar: "كم سعر إيجار مطبخ سحابي في جدة؟",
+    },
+    answer: {
+      en: "It depends on kitchen size and contract length — monthly, quarterly, or annual. Electricity, water, gas, internet, cleaning, and maintenance are included. Contact us for a quote for the size you need.",
+      ar: "يعتمد السعر على مساحة المطبخ ومدة العقد — شهري أو ربع سنوي أو سنوي. الكهرباء والماء والغاز والإنترنت والنظافة والصيانة مشمولة. تواصل معنا لعرض سعر حسب المساحة التي تحتاجها.",
+    },
+  },
+  {
+    id: "location",
+    home: true,
+    question: {
+      en: "Where are your cloud kitchens in Jeddah?",
+      ar: "أين تقع مطابخكم السحابية في جدة؟",
+    },
+    answer: {
+      en: "Our first hub is in Al Safa District, Jeddah, with 12 kitchens. New districts are planned in Jeddah, Riyadh, and Dammam.",
+      ar: "مركزنا الأول في حي الصفا بجدة ويضم ١٢ مطبخاً، مع خطط لأحياء جديدة في جدة والرياض والدمام.",
+    },
+  },
+  {
+    id: "licensing",
+    home: true,
+    question: {
+      en: "Do I need a license to run a cloud kitchen in Saudi Arabia?",
+      ar: "هل أحتاج ترخيصاً لتشغيل مطبخ سحابي في السعودية؟",
+    },
+    answer: {
+      en: "Yes. Your brand needs its own commercial registration and activity licenses. The facility side — licensing, utilities, and equipment — is ready from day one, and most tenants are operating within 14 days of signing.",
+      ar: "نعم، تحتاج علامتك إلى سجل تجاري وتراخيص نشاطها. أما جانب المنشأة — التراخيص والمرافق والمعدات — فجاهز من اليوم الأول، ويبدأ معظم المستأجرين التشغيل خلال ١٤ يوماً من التوقيع.",
+    },
+  },
+  {
+    id: "cloud-vs-central",
+    home: true,
+    question: {
+      en: "What's the difference between a cloud kitchen and a central kitchen?",
+      ar: "ما الفرق بين المطبخ السحابي والمطبخ المركزي؟",
+    },
+    answer: {
+      en: "A central kitchen prepares food in bulk and supplies a restaurant's branches. A cloud kitchen prepares orders for delivery straight to customers, with no dining room. Kitchen District's kitchens are built for delivery-first brands.",
+      ar: "المطبخ المركزي يجهّز الطعام بكميات كبيرة ويورّده لفروع المطعم، أما المطبخ السحابي فيجهّز الطلبات للتوصيل مباشرة إلى العملاء دون صالة طعام. مطابخ كيتشن ديستريكت مصممة للعلامات التي تعتمد على التوصيل.",
+    },
+  },
   {
     id: "onboarding",
     question: { en: "How long does onboarding take?", ar: "كم يستغرق التهيئة والانطلاق؟" },
@@ -547,6 +606,11 @@ export const contactChannels: ContactChannel[] = [
   { icon: "schedule", labelKey: "hours" },
   { icon: "location_on", labelKey: "location" },
 ];
+
+/** Brand social profiles — footer links and schema.org `sameAs`. */
+export const socialLinks = {
+  instagram: "https://www.instagram.com/kitchendistrict.sa/",
+} as const;
 
 /** Preferred-branch options for the contact form. */
 export const contactBranches: Localized[] = [

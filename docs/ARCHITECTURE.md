@@ -36,7 +36,9 @@ deployed on Vercel.
     breaks the build (intentional safety net).
   - `src/lib/content.ts` — structured data (nav links, benefits, solutions,
     pricing tiers, FAQ items, locations…). Every translatable string is
-    `Localized = { en, ar }`.
+    `Localized = { en, ar }`. FAQ items flagged `home: true` also appear in
+    the homepage FAQ (`sections/HomeFaq.tsx`); `socialLinks` feeds the footer
+    and the JSON-LD `sameAs`.
   - `src/context/LanguageProvider.tsx` — reads locale from the URL. Exposes
     `t` (dictionary), `pick(localized)`, `localize(href)` (prefixes internal
     links: `/pricing` → `/ar/pricing`), `toggleLocale()` (navigates to the
@@ -53,12 +55,21 @@ deployed on Vercel.
   body class, `<Providers locale>`.
 - Homepage section order (`[locale]/page.tsx`): Hero → HowItWorks → WhyUs →
   **Facilities before Solutions** (imagery first, deliberate) → Expansion →
-  InvestorTeaser → TrustStrip.
+  HomeFaq → InvestorTeaser → TrustStrip.
 - Shared primitives in `src/components/ui/`: `Button` (variants
-  primary/outline/ghost/subtle), `Icon` (Material Symbols ligatures),
-  `Reveal` (scroll-in animation, reduced-motion aware), `Accordion`
-  (exclusive-open FAQ), `PageHeader` (subpage hero), `field.ts` (shared form
-  field classes, also used by `modal/InquiryModal`).
+  primary/outline/ghost/subtle), `Icon` (Material Symbols — the ligature name
+  goes in `data-icon` and is drawn by a CSS `::before`, so icon names never
+  become indexable page text), `Reveal` (scroll-in animation, reduced-motion
+  aware), `Accordion` (exclusive-open FAQ; closed answers stay mounted —
+  collapsed + `inert` — so they are in the server HTML Google reads;
+  `headingLevel` wraps each question in an h2/h3), `PageHeader` (subpage
+  hero), `field.ts` (shared form field classes, also used by
+  `modal/InquiryModal`).
+- SEO plumbing: `src/lib/seo.ts` (`pageMetadata`, hreflang, `seoPages` with a
+  real per-page `lastModified` — bump it when a page's content changes),
+  `app/sitemap.ts`, `app/robots.ts`, JSON-LD in `[locale]/layout.tsx` and
+  `faq/page.tsx`. Strategy, rank log and Arabic SERP analysis: `docs/SEO.md`;
+  Business Profile setup: `docs/GBP.md`.
 - Global inquiry modal: `context/ModalProvider` + `modal/InquiryModal` —
   every "Book a Kitchen" / "Request a Quote" CTA opens it via `useModal()`,
   **except** the locations card (`sections/Expansion.tsx`), whose CTA links to
