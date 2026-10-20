@@ -7,7 +7,7 @@ export const maxDuration = 45;
 
 const RECIPIENTS = [
   "abdullah@kitchendistricts.com",
-  "support@kitchendistricts.com",
+  "support.kd@kitchendistricts.com",
   "basem.aldesoky@kitchendistricts.com",
   "ali@kitchendistricts.com",
 ];

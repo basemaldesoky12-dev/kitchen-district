@@ -541,8 +541,8 @@ export const contactChannels: ContactChannel[] = [
   {
     icon: "mail",
     labelKey: "email",
-    value: "support@kitchendistricts.com",
-    href: "mailto:support@kitchendistricts.com",
+    value: "support.kd@kitchendistricts.com",
+    href: "mailto:support.kd@kitchendistricts.com",
   },
   { icon: "schedule", labelKey: "hours" },
   { icon: "location_on", labelKey: "location" },

@@ -50,7 +50,7 @@ function organizationSchema(locale: Locale) {
         alternateName: dictionary[otherLocale].meta.siteName,
         url: SITE_URL,
         logo: `${SITE_URL}/kd-monogram.png`,
-        email: "support@kitchendistricts.com",
+        email: "support.kd@kitchendistricts.com",
       },
       {
         "@type": "LocalBusiness",

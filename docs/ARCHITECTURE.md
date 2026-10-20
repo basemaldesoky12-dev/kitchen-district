@@ -85,7 +85,7 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
 ## Known pending items
 
 - Contact details are live in `content.ts` (`contactChannels`): WhatsApp
-  `+966 56 170 0278` and `support@kitchendistricts.com`. The landline row was
+  `+966 56 170 0278` and `support.kd@kitchendistricts.com`. The landline row was
   dropped — WhatsApp is the only phone channel.
 - Custom domain `kitchendistricts.com` now resolves to Vercel and serves the
   site; `www` and `kitchen-district.vercel.app` 308-redirect to the apex via
