@@ -87,11 +87,46 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
                       # another local app; use `npx next start -p 3100`
 ```
 
-- Deploy: prebuilt flow — `vercel build --prod` then
-  `vercel deploy --prebuilt --prod`. Repo is public (Vercel Hobby requirement);
-  GitHub `basemaldesoky12-dev/kitchen-district`, work directly on `main`.
+- **Production has two deploy paths — know both.**
+  1. **Git (primary).** The Vercel project is connected to GitHub
+     `basemaldesoky12-dev/kitchen-district`: every push/merge to `main`
+     auto-deploys production (other branches get previews). Work also arrives
+     this way from outside this machine — the Zoho CRM integration landed via
+     PR #1/#2 from `zoho_integration` (2026-09-27/28). `vercel project inspect`
+     does not show the git link; a deployment's origin is visible with
+     `vercel api /v13/deployments/<id>` (`source: git` vs `cli`).
+  2. **CLI prebuilt (fallback).** `vercel pull --yes --environment production`
+     → `vercel build --prod` → `vercel deploy --prebuilt --prod --yes`. It ships
+     the *local working tree*, whatever it contains.
+- **Before any CLI deploy:** `git fetch origin`; `git log HEAD..origin/main` must
+  be empty (otherwise `git rebase origin/main`, rebuild, re-verify); clean
+  working tree. **Right after it:** push to GitHub. A CLI deploy that isn't on
+  GitHub is reverted by the next merge; a stale local `main` reverts GitHub-only
+  work. *Incident 2026-09-30:* a CLI deploy from a local `main` that had never
+  fetched the Zoho PRs replaced the Zoho build in production — no CRM leads were
+  created until the combined redeploy on 2026-10-02 (`59bcfc6`). See docs/ZOHO.md.
+- **GitHub access from this Mac:** the keychain git credential and `gh`'s active
+  account are `basemaldesoky-kd` (the KD Ops account), which has no access to
+  this repo → `git push` returns 403. `git fetch` works (public repo). A new
+  `basemaldesoky-kd` token won't help; fix by adding `basemaldesoky-kd` as a repo
+  collaborator, or push with a `basemaldesoky12-dev` token (fine-grained,
+  Contents read/write, this repo only, short expiry). `gh`'s stored
+  `basemaldesoky12-dev` login is broken.
+- Repo is public (Vercel Hobby blocks git deployments whose commit author isn't
+  a project member on private repos). Work directly on `main`.
+- Logs (Vercel CLI 51): `vercel logs --no-follow --no-branch --environment production --level error --since 1h`
+  — a deployment-URL argument implies `--follow`, which rejects filters.
 - Verification habits: full route sweep (`/en`, `/ar` × all pages), grep for
   stale palette hexes after color changes, RTL toggle check, reduced-motion.
+  For SEO changes, fetch the page and check the text outside `<script>` tags —
+  content that only renders after a click (or only in JSON-LD) is invisible to
+  Google. Never POST a real inquiry (real emails + Zoho leads); `POST
+  /api/inquiry` with body `[]` safely returns `400 Invalid inquiry`.
+- UI screenshots: the Claude-in-Chrome extension's tab runs in the background
+  (`document.visibilityState === "hidden"`), which freezes the scroll-reveal
+  animations and returns blank screenshots. Use headless Chrome via
+  `puppeteer-core` (installed outside the repo) for screenshots, console
+  errors, and interaction checks.
 
 ## Known pending items
 
@@ -103,3 +138,19 @@ npm run dev           # local dev — NOTE: port 3000 is sometimes taken by
   `next.config.ts` so ranking signals stay on one host.
 - Privacy/Terms footer links are `#` placeholders. Language choice isn't
   persisted beyond the URL.
+- **Incident 2026-10-20 (unpushed work reverted):** the Arabic SEO commits were
+  in production from a CLI deploy but existed only on this Mac. A teammate's
+  merge on GitHub (`cdeb95e`, support email change) auto-deployed and removed
+  them from production for 8 days. They were rebased onto it and pushed on
+  2026-10-29 (`5dacc5b`). Anything in `git log origin/main..main` is one GitHub
+  merge away from disappearing, so push it the same day.
+- **Brevo sender domain not verified** (DNS checked 2026-10-03): with the Gmail
+  sender fallback, abdullah@ and support@ hard-bounce on DMARC; only ali@ and
+  basem.aldesoky@ receive inquiry emails. Fix: add at GoDaddy TXT `@`
+  `brevo-code:0af78ea536b286c5898ea81e60a228c8`, CNAME `brevo1._domainkey` →
+  `b1.kitchendistricts-com.dkim.brevo.com`, CNAME `brevo2._domainkey` →
+  `b2.kitchendistricts-com.dkim.brevo.com`; then set `BREVO_SENDER_EMAIL` in
+  Vercel and redeploy.
+- No street address anywhere on the site (Google Business Profile not created
+  yet) — once GBP exists, put the identical address on the contact page and in
+  the `LocalBusiness` JSON-LD (see docs/GBP.md).

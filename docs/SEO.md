@@ -4,6 +4,41 @@ How to use this doc: work through the checklists top to bottom (P0 first), check
 off as they ship, and append a row to the **Rank log** every ~2 weeks. Baseline was
 captured on **2026-07-31** so improvement is always measured against a known start.
 
+## Status — 2026-10-28 (read this first)
+
+- **Production lost the Arabic SEO on 2026-10-20.** Commit `cdeb95e` (support email →
+  `support.kd@`) was merged on GitHub and auto-deployed. Its parent did not contain the
+  unpushed Arabic commits, so production went back to the pre-2026-09-30 Arabic page:
+  old title, no homepage FAQ, 406 Arabic words instead of 598, icon names in the page
+  text again, and a build-time sitemap `lastmod`. The Arabic changes were live for only
+  18 days (2026-10-02 → 2026-10-20), so no rank check has measured them yet.
+- **Restore pushed 2026-10-29.** The Arabic commits were rebased onto `cdeb95e`
+  (`5dacc5b`, `f9bda28`; the one conflict was resolved to keep `support.kd@`) and
+  pushed to GitHub `main`, which Vercel auto-deploys. The push used a one-off
+  `basemaldesoky12-dev` token, because `basemaldesoky-kd` has pull-only access
+  (docs/ARCHITECTURE.md → *GitHub access*).
+- **Indexing is fine.** `site:` lists all 6 Arabic pages (2026-10-28). The gap is still
+  off-page: no GBP; Google shows no external page that mentions `kitchendistricts.com`;
+  Instagram @kitchendistrict.sa has about 20 followers.
+- **Next, in order:**
+  1. **[you]** GSC → URL Inspection → *Request indexing* for `/ar`, `/ar/faq` and
+     `/ar/pricing`, so Google re-reads the restored pages sooner.
+  2. **[you]** Google Business Profile ([GBP.md](GBP.md)). Still waiting on the owning
+     account, National Address, signage, and someone in Jeddah to film verification.
+     The «مطابخ سحابية في جدة» map pack still has only 2 listings (re-check below).
+  3. **[you]** Haraj + msaha.sa listings. A Haraj ad is #1–#2 for the rental and price
+     queries (re-check below).
+  4. **[code]** Arabic guide pages, one per intent the homepage can't cover: rental
+     cost in Jeddah, licensing requirements, cloud kitchen vs restaurant. The owner must
+     supply a price range and confirm the licensing facts first.
+  5. **[you]** Links: sabbar.com's list, a Jeddah press story on the Al Safa opening,
+     delivery-app partner pages, Instagram bio → `https://kitchendistricts.com/ar`.
+  6. **[you]** Reviews from the first tenants once GBP is live.
+- **Next check:** around **2026-11-25** (4 weeks after the restore deploys). Use GSC
+  *Performance* (country Saudi Arabia, queries containing مطابخ/مطبخ) plus the rank log.
+  First confirm production is the version you expect: check the `/ar` `<title>` and
+  `vercel ls kitchen-district --prod`.
+
 ## Baseline snapshot — 2026-07-31
 
 **Google rank for target queries: none.** `site:kitchendistricts.com` returns zero
@@ -81,6 +116,15 @@ What Google shows for the Arabic queries (`gl=sa&hl=ar`):
   prices, descriptive Arabic headings, question-style content, and years of links
   and reviews.
 
+### Re-check — 2026-10-28 (`gl=sa&hl=ar&pws=0`, page 1)
+
+| Query | Page 1 | Takeaway |
+|---|---|---|
+| مطابخ سحابية في جدة | Kitchen Yard → **map pack (still 2: KitchenUp «مطابخ سحابية», ملالة)** → Cul.in IG, atyabtabkha, Clan, msaha.sa, Time Out Jeddah, sabbar, Virtual Restaurant | Unchanged since 09-30; the map pack is the open slot |
+| مطبخ سحابي للإيجار جدة | Kitchen Yard, **Haraj ad (#2)**, Clan, an Instagram post, virtualkitchens, KitchenUp on X, msaha.sa, samadrasat | A Haraj ad reaches page 1 |
+| كم قيمة إيجار مطبخ سحابي | **Haraj ad (#1)**, Foodics + KitchenPark Arabic cost guides, Clan, bena2, Kitchen Yard, IG reel, praxismodel 2026 guide | Cost guides win; no page gives Jeddah prices |
+| شروط المطابخ السحابية | Monsha'at, MOMAH, Daftra, diamondglare, sabbar, hadatha, Balady, Foodics | Licensing guides; government pages on top |
+
 ## Action plan
 
 Owner legend: **[code]** = shippable in this repo · **[you]** = needs the account owner
@@ -97,10 +141,10 @@ Owner legend: **[code]** = shippable in this repo · **[you]** = needs the accou
   hreflang entries. *(2026-07-31)*
 - [x] **[you]** Submit the sitemap in GSC (`https://kitchendistricts.com/sitemap.xml`
   — a Domain property needs the full URL). *(2026-09-30)*
-- [ ] **[you]** *URL Inspection → Request indexing* for `/ar/contact`, `/ar/faq`,
+- [x] **[you]** *URL Inspection → Request indexing* for `/ar`, `/ar/faq`, `/ar/contact`,
   `/en/faq`, `/en/about`, `/en/contact` (some were "URL is unknown to Google" on
   2026-09-30). The first attempt failed with a new-property "Something went wrong"
-  error — retry. After the Arabic content deploy, also re-request `/ar` and `/ar/faq`.
+  error; retried after the Arabic deploy and confirmed indexed. *(2026-10-02)*
 - [x] **[code]** Set `metadataBase` + per-page `alternates.canonical` +
   `alternates.languages` (`en`, `ar`, `x-default`) via `src/lib/seo.ts`. *(2026-07-31)*
 - [x] **[code]** Host consolidation: `next.config.ts` now 308-redirects
@@ -170,6 +214,38 @@ Owner legend: **[code]** = shippable in this repo · **[you]** = needs the accou
   Overview for «مطابخ سحابية» quotes Clan's "from 3,500 SAR", and
   «كم قيمة إيجار مطبخ سحابي؟» is a People-also-ask question.
 
+## Lessons learned (2026-09-30 → 2026-10-28)
+
+- **`site:` undercounts.** It left out `/ar` while GSC URL Inspection showed it indexed
+  with the right canonical. Diagnose indexing with URL Inspection, never `site:`.
+- **Check Arabic queries as a Saudi searcher** (`gl=sa&hl=ar&pws=0`). Without `gl=sa`,
+  a search from Egypt shows Egyptian results.
+- **Content Google can't see doesn't rank.** The FAQ accordion only mounted an answer
+  when clicked, so no answer text was in the HTML, and JSON-LD alone isn't page content.
+  Verify SEO copy by fetching the page and searching the text outside `<script>` tags.
+- **Icon fonts leak words.** Material Symbols ligatures put 43 English words
+  ("rocket_launch"…) into the Arabic page text; `Icon` now draws them via CSS.
+- **The Arabic gap was off-page, not on-page.** Competitor pages were no stronger than
+  ours; they had the map pack (GBP), reviews, years of links, Haraj/Instagram presence,
+  and published prices. Code changes help relevance; the owner-side items move rankings.
+- **New GSC properties are flaky for a day.** "Request indexing" returned "Something went
+  wrong" right after verification and worked the next day. A Domain property's sitemap
+  field needs the full URL. "URL is unknown to Google" on a new domain means low crawl
+  priority, not broken links (the internal links were in the HTML).
+- **Sitemap `lastmod` must be real** — a build-time date on every URL teaches Google to
+  ignore it. Bump `seoPages[].lastModified` in `src/lib/seo.ts` when a page changes.
+- **Deploys can silently undo work.** A CLI deploy from a stale local `main` removed the
+  Zoho CRM integration from production for two days — follow the deploy rule in
+  AGENTS.md (fetch + rebase before, push after).
+- **Verify claims about the platform from its own metadata.** "No git integration" was
+  wrong: `vercel project inspect` doesn't show it, but each deployment's `source` does
+  (`vercel api /v13/deployments/<id>`).
+- **Unpushed work is not shipped (2026-10-20).** The Status section warned that the next
+  GitHub merge would revert the Arabic commits, and a teammate's one-line email change
+  did exactly that. Nobody noticed for 8 days, and a "no Arabic rankings" check that
+  week was measuring the old page. Before reading any rank result, confirm production
+  serves what you think it does.
+
 ## Rank log
 
 Check protocol: incognito window, `google.com/search?q=<query>&gl=sa&pws=0` with
@@ -193,9 +269,11 @@ Arabic (`hl=ar`):
 |------------|-----|-----|-----|-----|-----|
 | 2026-07-31 | — | n/c | n/c | n/c | — |
 | 2026-09-30 | — (top 40) | — (top 30) | — (top 30) | — (page 1) | **1** |
+| 2026-10-28 | — (page 1; user: not in top 100) | n/c | n/c | n/c | n/c |
 
 n/c = not checked. The 2026-09-30 Arabic row predates the Arabic content changes
-logged in P1 (deployed after this check).
+logged in P1 (deployed after this check). The 2026-10-28 row measures the **old** page
+again, because production reverted to it on 2026-10-20 (see Status).
 
 Milestones to expect: indexed within days of P0 · brand query #1 within ~1–2 weeks of
 indexing · Jeddah queries climbing within 4–8 weeks of P1+P2 · page 1 for "cloud

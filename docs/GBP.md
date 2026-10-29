@@ -7,6 +7,10 @@ kitchens in jeddah"; Arabic organic will take months of authority, but a verifie
 can reach the map pack in weeks. No Kitchen District listing exists on Google Maps yet
 (searched in English and Arabic, 2026-09-30), so this is a new profile, not a claim.
 
+**Status (2026-10-03): not created yet.** The step-by-step was walked through with the
+owner; it is waiting on: which Google account will own it, the exact National Address,
+the sign on the building, and who will film the verification video in Jeddah.
+
 Create at **business.google.com/create** (or Google Maps → *Add your business*). Use a
 company Google account — ideally one on `@kitchendistricts.com` (accounts.google.com/signup
 → *Use your existing email*) — **not** a personal Gmail. Ownership of this profile is
@@ -25,6 +29,9 @@ ownership of the Maps listing; a personal account makes handover painful later.
    — do not create a North Obhur profile until it exists and is staffed.
 5. The WhatsApp line **+966 56 170 0278** reachable (Google may call or text it), and the
    C.R. certificate (+ Balady license if available) on hand for documentary verification.
+6. **Who films the verification video?** It has to be recorded at the facility in Jeddah,
+   on a phone signed in to the account that owns the profile. If whoever creates the
+   profile isn't in Jeddah, use a shared company account the on-site person can sign into.
 
 ## Field-by-field values
 

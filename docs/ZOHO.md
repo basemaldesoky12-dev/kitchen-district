@@ -57,3 +57,30 @@ in Vercel's Production environment and redeploy this code to enable it there.
 
 References: [OAuth refresh](https://www.zoho.com/crm/developer/docs/api/v8/refresh.html),
 [creating records](https://www.zoho.com/crm/developer/docs/api/v8/insert-records.html).
+
+## Verifying without side effects
+
+- Never test with a real submission — it sends the notification email and creates
+  a real lead.
+- Safe probe: `POST /api/inquiry` with body `[]` returns
+  `400 {"error":"Invalid inquiry"}` (the Zoho-era validation) and sends nothing. If
+  it returns `Name is required`, the deployed route predates this integration.
+- End-to-end check (a person does it): one inquiry with a name like
+  `TEST - delete me`, confirm the lead in Zoho and the email, then delete the lead.
+- Local runs: the `ZOHO_*` variables are only in Vercel, not in `.env.local`, so
+  local submissions never reach Zoho (the route logs `Inquiry CRM delivery failed`).
+
+## Incident — CRM offline 2026-09-30 17:51 → 2026-10-02 21:52 (KSA time)
+
+- **What happened:** PR #1/#2 were merged on GitHub and auto-deployed (production
+  had Zoho from 2026-09-28 23:26). On 2026-09-30 an Arabic-SEO change was deployed
+  with `vercel deploy --prebuilt` from a local clone whose `main` had never fetched
+  those PRs, so that deploy replaced the Zoho build. Emails kept working; **no CRM
+  leads were created in that window.**
+- **Fix:** fetched GitHub, rebased the local commits onto `origin/main`, rebuilt,
+  verified (route returns the Zoho-era `Invalid inquiry`), redeployed `59bcfc6`.
+- **Recovery (owner):** add inquiries received in that window to Zoho by hand from
+  the notification emails. While Brevo's domain DNS records are still missing, only
+  ali@ and basem.aldesoky@ receive those emails (abdullah@ and support@ bounce).
+- **Prevention:** the deploy rule in AGENTS.md / docs/ARCHITECTURE.md — fetch and
+  rebase before any CLI deploy, push right after.
