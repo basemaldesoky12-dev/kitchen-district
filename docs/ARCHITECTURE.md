@@ -13,7 +13,7 @@ deployed on Vercel.
   `src/app/globals.css`), Motion 12 for animation.
 - No database, no test suite. One API route: `src/app/api/inquiry/route.ts` —
   both forms (InquiryModal + ContactContent) POST via `src/lib/inquiry.ts`
-  and it emails the four kitchendistricts.com recipients through Brevo's
+  and it emails the five inquiry recipients through Brevo's
   transactional API (`BREVO_API_KEY` env var), while creating a Zoho CRM lead
   through `src/lib/zoho.ts`. See [ZOHO.md](ZOHO.md) for credentials and failure
   handling. Email alone determines the form response; CRM runs independently

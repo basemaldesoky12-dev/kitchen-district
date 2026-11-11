@@ -10,6 +10,7 @@ const RECIPIENTS = [
   "support.kd@kitchendistricts.com",
   "basem.aldesoky@kitchendistricts.com",
   "ali@kitchendistricts.com",
+  "aa_sami@hotmail.com",
 ];
 
 const BREVO_ENDPOINT = "https://api.brevo.com/v3/smtp/email";
